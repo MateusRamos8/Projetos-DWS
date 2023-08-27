@@ -253,29 +253,42 @@ Grandes Telas: acima de 1200px
 
 @media screen and (max-width: 850px) and (min-width: 600px){
     header.top-bar{
-        font-size: 0.8em;
+        font-size: 0.7em;
     }
     nav.games ul li a{
-        width: 270px;
+        width: 250px;
         font-size: 1.5em;
         margin: 0px;
     }
     nav.games ul{
-        gap: 15px;
+        gap: 10px;
     }
 }
 
 @media screen and (max-width: 600px) and (min-width: 400px){
     header.top-bar{
-        font-size: 0.6em;
+        font-size: 0.5em;
     }
     nav.games ul li a{
-        width: 200px;
-        font-size: 1.25em;
+        width: 175px;
+        font-size: 1.10em;
         margin: 0px;
     }
     nav.games ul{
-        gap: 15px;
+        gap: 10px;
+    }
+}
+@media screen and (max-width: 400px){
+    header.top-bar{
+        font-size: 0.425em;
+    }
+    nav.games ul li a{
+        width: 175px;
+        font-size: 1.10em;
+        margin: 0px;
+    }
+    nav.games ul{
+        gap: 10px;
     }
 }
 
