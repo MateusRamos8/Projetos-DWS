@@ -1,0 +1,257 @@
+@charset "UTF-8";
+/*Google Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Stardos+Stencil:wght@400;700&display=swap');
+
+/*Variáveis de Cor e Fonte*/
+:root{
+    --cor1: #8ecae6;
+    --cor2: #219ebc;
+    --cor3: #023047;
+    --cor4: #ffb703;
+    --cor5: #fb8500;
+    --fonte1: 'Orbitron', sans-serif;
+    --fonte2: 'Raleway', sans-serif;
+    --fonte3: 'Stardos Stencil', cursive;
+}
+
+/*Reset*/
+*{
+    font-family: var(--fonte2);
+    padding: 0px;
+    margin: 0px;
+}
+
+/*Configuração de Seleção*/
+*::selection{
+    background-color: #26b4d8;
+}
+
+/*Configuração de Scrollbar*/
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background-color: #09101d;;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #3b9ab4;
+    border-radius: 75px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: #fb8500;
+}
+
+/*Mudando a fonte */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fonte1);
+}
+
+
+/*Configurações Gerais*/
+body{
+    background-color: black;
+    color: #fff;
+    max-width: 100vw;
+    min-height: 100vh;
+    text-align: justify;
+    position: relative;
+}
+p{
+    text-indent: 20px;
+    word-wrap: break-word;
+    margin: 20px auto;
+    line-height: 1.5em;
+    font-size: 1.5em;
+}
+mark{
+    background-color: #ffb703;
+}
+
+/*Configurações de Link*/
+a{
+    word-wrap: break-word;
+    word-break: break-all;
+    display: inline;
+    color: #fb8500;
+}
+a:visited{
+    color: #345b6e;
+}
+a:hover{
+    color: #26b4d8;
+}
+a:active{
+    color: #ffb703;
+}
+
+/*Configuraçõees da Barra do Topo*/
+header.top-bar{
+    position: sticky;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #09101d;
+    border-bottom: 2px solid #219ebc;
+    box-shadow: 0px 2px 5px 0px #219dbc54;
+    font-size: 1.5em;
+    z-index: 1;
+}
+header.top-bar div{
+    display: flex;
+    align-items: center;
+}
+header.top-bar div span{
+    font-family: var(--fonte1);
+    font-size: 1.2em;
+}
+header.top-bar img{
+    width: 50px;
+    margin-right: 5px;
+}
+
+/*Configurações da Seção de Introdução*/
+section section.intro{
+    padding: 20px;
+}
+section section.intro h1{
+    font-size: 3em;
+    font-family: var(--fonte3);
+    text-shadow: -1px 1px 8px #ffffff6c;
+}
+
+/*Configurações dos Links de Navegação*/
+nav.games{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0px 100px 0px;
+}
+nav.games ul{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+nav.games ul li a{
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    text-decoration: none;
+    border: 3px solid #219ebc;
+    border-radius: 20px;
+    width: 325px;
+    text-align: center;
+    font-size: 1.25em;
+    margin: 20px;
+}
+nav.games ul li a:hover{
+    transform: translateY(-6px);
+    box-shadow: -1px 1px 5px 2px #ffb80342;
+    border-color: #fb8500;
+    transition: border 0.3s, transform 0.25s, box-shadow 0.25s;
+}
+nav.games ul li a:hover img{
+    border-color: #fb8500;
+}
+nav.games ul li a img{
+    width: 100%;
+    border-radius: 17px 17px 0px 0px;
+    border-bottom: 1px solid #219ebc;
+}
+nav.games ul li a h3::before, nav.games ul li a h3::after{
+    content: ' - '
+}
+nav.games ul li a h3{
+    font-family: var(--fonte3);
+}
+
+/*Configurações no Main e nas Seções dos jogos*/
+main section.seccont{
+    margin: 40px 40px 150px 40px;
+}
+main section.seccont p{
+    line-height: 1.5em;
+    font-size: 1.5em;
+}
+main section.seccont h2{
+    font-size: 2.5em;
+}
+main section section.secimg{
+    background-attachment: fixed;
+    height: 600px;
+    box-shadow: inset 0px 0px 20px 10px rgba(0, 0, 0, 0.747);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section.img1{
+    background-image: url('https://cdn1.epicgames.com/min/offer/2560x1440-2560x1440-5e710b93049cbd2125cf0261dcfbf943.jpg');
+}
+section.img2{
+    background-image: url('https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/wiiu_download_software_5/H2x1_WiiUDS_HollowKnight.jpg');
+}
+section.img3{
+    background-image: url('https://noitagame.com/images/twitter-card.jpg');
+}
+section.img4{
+    background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*kbCw3Dox2W3chMnxNpNwuQ.jpeg');
+}
+section.img5{
+    background-image: url('https://cdn1.epicgames.com/magnolia/offer/apwY_6SY-2560x1440-2488c90d3f59222d4cc25ae255651cb0.jpeg');
+}
+
+/*Configurações do Rodape*/
+footer{
+    background-color: #09101d;
+    padding: 10px;
+}
+footer p{
+    margin: 0px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+/*Configurações do Botão para Voltar ao Topo*/
+a.btopo{
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    text-decoration:none;
+    color: #023047;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+}
+a.btopo span{
+    font-size: 2.25em;
+    font-weight: bolder;
+}
+
+/*
+Configurações de Media Query
+
+Typical Device BreakPoints
+Pequenas Telas: até 600px
+Celular: 600px até 768px
+Tablet: 768px ate 992px
+Desktop:992px até 1200px
+Grandes Telas: acima de 1200px
+*/
+@media screen and (max-width: 1000px) and (min-width: 850px){
+    header.top-bar{
+        font-size: 1.2em;
+    }
+}
+@media screen and (max-width: 850px) and (min-width: 600px){
+    header.top-bar{
+        font-size: 0.8em;
+    }
+}
