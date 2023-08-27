@@ -248,14 +248,12 @@ Grandes Telas: acima de 1200px
 @media screen and (max-width: 1000px) and (min-width: 850px){
     header.top-bar{
         font-size: 1.2em;
-        color: green;
     }
 }
 
 @media screen and (max-width: 850px) and (min-width: 600px){
     header.top-bar{
         font-size: 0.8em;
-        color: yellow;
     }
     nav.games ul li a{
         width: 270px;
@@ -270,7 +268,6 @@ Grandes Telas: acima de 1200px
 @media screen and (max-width: 600px) and (min-width: 400px){
     header.top-bar{
         font-size: 0.6em;
-        color: red;
     }
     nav.games ul li a{
         width: 200px;
