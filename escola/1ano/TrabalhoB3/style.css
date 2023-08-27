@@ -113,10 +113,10 @@ header.top-bar img{
 }
 
 /*Configurações da Seção de Introdução*/
-section section.intro{
+section.intro{
     padding: 20px;
 }
-section section.intro h1{
+section.intro h1{
     font-size: 3em;
     font-family: var(--fonte3);
     text-shadow: -1px 1px 8px #ffffff6c;
@@ -248,10 +248,50 @@ Grandes Telas: acima de 1200px
 @media screen and (max-width: 1000px) and (min-width: 850px){
     header.top-bar{
         font-size: 1.2em;
+        color: green;
     }
 }
+
 @media screen and (max-width: 850px) and (min-width: 600px){
     header.top-bar{
         font-size: 0.8em;
+        color: yellow;
+    }
+    nav.games ul li a{
+        width: 270px;
+        font-size: 1.5em;
+        margin: 0px;
+    }
+    nav.games ul{
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 400px){
+    header.top-bar{
+        font-size: 0.6em;
+        color: red;
+    }
+    nav.games ul li a{
+        width: 200px;
+        font-size: 1.25em;
+        margin: 0px;
+    }
+    nav.games ul{
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 850px){
+    main section section.secimg{
+        background-attachment: scroll;
+        height: 300px;
+    }
+    section.intro p, main section.seccont p{
+        font-size: 1em;
+        line-height: 1.75em;
+    }
+    section.intro h1, main section.seccont h2{
+        font-size: 1.75em;
     }
 }
