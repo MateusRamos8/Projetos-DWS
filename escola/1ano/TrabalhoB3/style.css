@@ -280,7 +280,7 @@ Grandes Telas: acima de 1200px
 }
 @media screen and (max-width: 400px){
     header.top-bar{
-        font-size: 0.425em;
+        font-size: 0.40em;
     }
     nav.games ul li a{
         width: 175px;
