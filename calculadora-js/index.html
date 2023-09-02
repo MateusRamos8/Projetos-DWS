@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora</title>
+</head>
+<body>
+    <main>
+        <section class="calc">
+            <section class="visor">
+                <section>
+                    <span id="conta"></span>
+                    <span id="res"></span>
+                </section>
+            </section>
+            <section class="input">
+                <input type="button" value="CE" onclick="clean()">
+                <input type="button" value="" onclick="addop(this)">
+                <input type="button" value="%" onclick="addop(this)">
+                <input type="button" value="/" onclick="addop(this)">
+                <input type="button" value="7" onclick="addnum(this)" id="i">
+                <input type="button" value="8" onclick="addnum(this)">
+                <input type="button" value="9" onclick="addnum(this)">
+                <input type="button" value="*" onclick="addop(this)">
+                <input type="button" value="4" onclick="addnum(this)">
+                <input type="button" value="5" onclick="addnum(this)">
+                <input type="button" value="6" onclick="addnum(this)">
+                <input type="button" value="-" onclick="addop(this)">
+                <input type="button" value="1" onclick="addnum(this)">
+                <input type="button" value="2" onclick="addnum(this)">
+                <input type="button" value="3" onclick="addnum(this)">
+                <input type="button" value="+" onclick="addop(this)" class="row2">
+                <input type="button" value="0" onclick="addnum(this)">
+                <input type="button" value="." onclick="adddec()">
+                <input type="button" value="=" onclick="calc_res()">
+            </section>
+        </section>
+        <footer>
+            <span>&copy;Mateus Ramos</span>
+        </footer>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
