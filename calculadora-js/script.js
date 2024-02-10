@@ -1,6 +1,9 @@
 let res = document.getElementById('res');
 let conta = document.getElementById('conta');
 
+let rih = res.innerHTML;
+let cih = conta.innerHTML;
+
 /*
 Números devem ser adicionados no res e na conta sempre que clicados.
 Ao clicar um número:
@@ -31,10 +34,11 @@ Ao clicar o DELETE:
     -Caso tudo seja apagado, deverá aparecer 0.
 */
 
+
+
 function addnum(button){
     let num_add = button.value;
-    let rih = res.innerHTML;
-    let cih = conta.innerHTML;
+    Update();
     
     if (rih.includes("+") || rih.includes("-") || rih.includes("*") || rih.includes("/") || rih.includes("%") || rih.includes("=") ){
         res.innerHTML = num_add;
@@ -54,8 +58,7 @@ function addnum(button){
 }
 function addop(button){
     let op = button.value;
-    let rih = res.innerHTML;
-    let cih = conta.innerHTML;
+    Update();
 
     if (cih.includes("=")){
         conta.innerHTML = `${res.innerHTML} <strong>${op}</strong> `;
@@ -79,32 +82,7 @@ function calc_res(){
     conta.innerHTML += ' <strong>=</strong> '
 }
 function del(){
-    let rih = res.innerHTML;
-    let cih = conta.innerHTML;
-
-    /*
-    let lastop, lastop_num;
-
-    lastop_num = conta.innerText.lastIndexOf("+");
-    lastop = "+";
-
-    if(conta.innerText.lastIndexOf("-") > lastop_num){
-        lastop_num = conta.innerText.lastIndexOf('-');
-        lastop = "-"
-    }
-    if(conta.innerText.lastIndexOf("*") > lastop_num){
-        lastop_num = conta.innerText.lastIndexOf('*');
-        lastop = "*"
-    }
-    if(conta.innerText.lastIndexOf("/") > lastop_num){
-        lastop_num = conta.innerText.lastIndexOf('/');
-        lastop = "/"
-    }
-    if(conta.innerText.lastIndexOf("%") > lastop_num){
-        lastop_num = conta.innerText.lastIndexOf('%');
-        lastop = "%"
-    }
-    */
+    Update();
     
 
     if(rih.includes("+") || rih.includes("-") || rih.includes("*") || rih.includes("/") || rih.includes("%") || rih.includes("=")){
@@ -117,4 +95,9 @@ function del(){
         conta.innerHTML = conta.innerHTML.slice(0, -1);
     }
     
+}
+
+function Update(){
+    rih = res.innerHTML;
+    cih = conta.innerHTML;
 }
