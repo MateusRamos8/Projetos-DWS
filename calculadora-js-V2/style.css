@@ -287,6 +287,15 @@ aside{
     body{
         min-height: 85vh;
     }
+    .input{
+        height: 60vh;
+    }
+    #menu{
+        height: 87vh;
+    }
+    #menu > section > section.container{
+        height: 70vh;
+    }
     #menu > section > section.container{
         overflow-y: scroll; 
     }
@@ -296,9 +305,11 @@ aside{
     }
 }
 @media screen and (max-height: 650px){
-    
+    #menu{
+        height: 90vh;
+    }
     #menu > section > section.container{
-        height: 80vh;
+        height: 65vh;
     }
 
 }
@@ -310,11 +321,8 @@ aside{
         font-size: 3em;
         line-height: 0.75em;
     }
-    .input{
-        height: 60vh;
-    }
 }
-@media screen and (max-width: 555px){
+@media screen and (max-width: 555px){   
     main{
         width: 100vw;
     }
@@ -327,7 +335,7 @@ aside{
 }
 @media screen and (max-height: 500px){
     #menu > section > section.container{
-        height: 75vh;
+        height: 60vh;
     }
 }
 
