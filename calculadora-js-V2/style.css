@@ -176,8 +176,8 @@ a{
 .input{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 3px;
-    padding: 3px;
+    gap: 5px;
+    padding: 3px 15px 15px 15px;
     height: 68vh;
 }
 
@@ -321,7 +321,7 @@ aside{
 }
 @media screen and (max-height: 500px){
     #menu > section > section.container{
-        height: 70vh;
+        height: 50vh;
     }
 }
 
