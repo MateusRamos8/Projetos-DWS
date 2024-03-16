@@ -41,6 +41,12 @@ main{
     display: flex;
     position: relative;
     align-items: center;
+    justify-content: space-between;
+}
+.c-type > section{
+    display: flex;
+    position: relative;
+    align-items: center;
     gap: 15px;
     padding: 1.6vh; 
 }
@@ -139,11 +145,8 @@ a{
 
 #hist-btn{
     display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 1.5vh;
     padding: 7.5px;
+    margin: 1.6vh;
     border-radius: 4px;
 }
     
@@ -160,12 +163,11 @@ a{
 }
 .result{
     font-size: 4em;
+    line-height: 1.25em;
 }
 
 .favs{
-    position: relative;
-    top: 2vh;
-    padding: 5px 10px;
+    padding: 5px 10px ;
 }
 .favs button{
     padding: 10px;
@@ -287,19 +289,36 @@ aside{
         display: none;
     }
     #hist-btn{
-        display: block;
+        display: flex;
     }
 }
 @media screen and (max-height: 888px){
     #menu > section > section.container{
         overflow-y: scroll; 
     }
-    
+    .input button{
+        font-size: 1em;
+        
+    }
 }
 @media screen and (max-height: 650px){
     #menu > section > section.container{
         height: 80vh;
     }
+    .input{
+        height: 60vh;
+    }
+
+}
+@media screen and (max-height: 600px){
+    .visor{
+        font-size: 1em;
+    }
+    .result{
+        font-size: 3em;
+        line-height: 0.75em;
+    }
+
 }
 @media screen and (max-height: 500px){
     #menu > section > section.container{
