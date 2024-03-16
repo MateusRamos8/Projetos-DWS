@@ -285,16 +285,16 @@ aside{
 
 @media screen and (max-height: 888px){
     body{
-        min-height: 85vh;
+        min-height: 90vh;
     }
     .input{
         height: 60vh;
     }
     #menu{
-        height: 87vh;
+        height: 88vh;
     }
     #menu > section > section.container{
-        height: 70vh;
+        height: 75vh;
     }
     #menu > section > section.container{
         overflow-y: scroll; 
