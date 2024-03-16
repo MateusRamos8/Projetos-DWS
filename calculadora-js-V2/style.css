@@ -305,7 +305,7 @@ aside{
         height: 80vh;
     }
     .input{
-        height: 60vh;
+        height: 50vh;
     }
 
 }
@@ -321,7 +321,7 @@ aside{
 }
 @media screen and (max-height: 500px){
     #menu > section > section.container{
-        height: 50vh;
+        height: 75vh;
     }
 }
 
