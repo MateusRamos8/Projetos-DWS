@@ -299,16 +299,14 @@ aside{
         font-size: 1em;
         
     }
-}
-@media screen and (max-height: 650px){
-    main{
-        justify-content: space-evenly;
-    }
-    #menu > section > section.container{
-        height: 80vh;
-    }
     .input{
         height: 50vh;
+    }
+}
+@media screen and (max-height: 650px){
+    
+    #menu > section > section.container{
+        height: 80vh;
     }
 
 }
