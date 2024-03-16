@@ -280,17 +280,7 @@ aside{
 }
 
 
-@media screen and (max-width: 555px){
-    main{
-        width: 100vw;
-    }
-    aside{
-        display: none;
-    }
-    #hist-btn{
-        display: flex;
-    }
-}
+
 @media screen and (max-height: 888px){
     #menu > section > section.container{
         overflow-y: scroll; 
@@ -298,9 +288,6 @@ aside{
     .input button{
         font-size: 1em;
         
-    }
-    .input{
-        height: 50vh;
     }
 }
 @media screen and (max-height: 650px){
@@ -318,7 +305,20 @@ aside{
         font-size: 3em;
         line-height: 0.75em;
     }
-
+    .input{
+        height: 60vh;
+    }
+}
+@media screen and (max-width: 555px){
+    main{
+        width: 100vw;
+    }
+    aside{
+        display: none;
+    }
+    #hist-btn{
+        display: flex;
+    }
 }
 @media screen and (max-height: 500px){
     #menu > section > section.container{
