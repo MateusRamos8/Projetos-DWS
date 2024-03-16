@@ -285,7 +285,7 @@ aside{
 
 @media screen and (max-height: 888px){
     body{
-        min-height: 90vh;
+        min-height: 85vh;
     }
     #menu > section > section.container{
         overflow-y: scroll; 
