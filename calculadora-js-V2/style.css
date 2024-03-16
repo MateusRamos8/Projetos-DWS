@@ -321,7 +321,7 @@ aside{
 }
 @media screen and (max-height: 500px){
     #menu > section > section.container{
-        height: 75vh;
+        height: 70vh;
     }
 }
 
