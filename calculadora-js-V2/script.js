@@ -7,7 +7,7 @@ document.getElementById("menu-btn").addEventListener("click", ()=>{
     //s_fix_scrl.style.display = "block";
     menuVisible = true;
   } else{
-    menu.style.transform = "translateX(-100%)";
+    menu.style.transform = "translateX(-150%)";
     //s_fix_scrl.style.display = "none";
     menuVisible = false;
   }
