@@ -301,6 +301,9 @@ aside{
     }
 }
 @media screen and (max-height: 650px){
+    main{
+        justify-content: space-evenly;
+    }
     #menu > section > section.container{
         height: 80vh;
     }
