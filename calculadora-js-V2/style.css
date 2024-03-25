@@ -7,6 +7,9 @@
     font-family: "Noto Sans Lao Looped", sans-serif;
     box-sizing: border-box;
 }
+img[alt="www.000webhost.com"]{
+    display: none;
+}
 html{
     background-color: #202020;
 }
@@ -15,7 +18,7 @@ body {
     background-color: #202020;
     display: flex;
     color: #fff;
-    overflow: auto;
+    overflow: hidden;
 }
 
  ::-webkit-scrollbar{
@@ -69,6 +72,7 @@ button:active{
     background-color: #292929;
 }
 
+
 #menu-btn{
     padding: 7.5px;
     border-radius: 4px;
@@ -93,7 +97,7 @@ button:active{
     line-height: 1em;
     transform: translateX(-150%);
     transition: transform 0.4s ease-in-out;
-    box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.244)
+    box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.244);
 }
 #menu > section > div{
     height: 50px;
@@ -167,6 +171,7 @@ a{
     line-height: 1.25em;
 }
 
+
 .favs{
     padding: 5px 10px ;
 }
@@ -175,6 +180,7 @@ a{
     border-radius: 4px;
 }
 
+
 .input{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -182,7 +188,6 @@ a{
     padding: 3px 15px 15px 15px;
     height: 68vh;
 }
-
 .input button{
     font-size: 1.5em;
     border-radius: 10px;
@@ -195,7 +200,6 @@ a{
 .input button:active{
     background-color: #323232;
 }
-
 .digit{
     background-color: #3B3B3B !important;
 }
@@ -205,7 +209,6 @@ a{
 .digit:active{
     background-color: #282828 !important;
 }
-
 #equal{
     background-color: #F57051 !important;
     color: #0E0E0E;
@@ -220,27 +223,20 @@ a{
 
 
 
-
-
-
 .as-type{
     display: flex;
     gap: 25px   ;
     padding: 20px;
 }
-
-
 .as-type a{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 }
-
 .as-type a:hover{
     color: #ccc;    
 }
-
 .as-type a div{
     display: block;
     background-color: #db4b4b;
@@ -254,7 +250,6 @@ a{
     flex-direction: column;
     gap: 5px;
 }
-
 .aside-item{
     text-align: right;
     height: 100px;
@@ -264,21 +259,32 @@ a{
     gap: 20px;
     padding: 20px;
 }
-
 #clean{
     position: absolute;
     bottom: 10px;
     right: 10px;
     padding: 7px 7.5px 7.5px 7.5px;
     border-radius: 4px;
+    z-index: 3;
 }
-
-
-
 aside{
     display: block;
     width: 350px;
     position: relative;
+}
+
+#hist{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background-color: #282828;
+    height: 72vh;
+    width: 100%;
+    transform: translateY(150%);
+    transition: all 0.4s ease-in-out;
 }
 
 
@@ -287,17 +293,17 @@ aside{
     body{
         min-height: 90vh;
     }
-    .input{
-        height: 65vh;
-    }
+
     #menu{
         height: 92vh;
     }
     #menu > section > section.container{
         height: 75vh;
-    }
-    #menu > section > section.container{
         overflow-y: scroll; 
+    }
+
+    .input{
+        height: 65vh;
     }
     .input button{
         font-size: 1em;
@@ -322,15 +328,21 @@ aside{
         line-height: 0.75em;
     }
 }
+
 @media screen and (max-width: 555px){   
     main{
         width: 100vw;
     }
+    
+    #hist-btn, #hist{
+        display: flex!important;
+    }
+
     aside{
         display: none;
     }
-    #hist-btn{
-        display: flex;
+    #clean{
+        display: none;
     }
 }
 @media screen and (max-height: 500px){
