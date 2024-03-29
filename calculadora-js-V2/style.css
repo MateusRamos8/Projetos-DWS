@@ -15,7 +15,7 @@ body {
     background-color: #202020;
     display: flex;
     color: #fff;
-    overflow: auto;
+    overflow: hidden;
 }
 
  ::-webkit-scrollbar{
