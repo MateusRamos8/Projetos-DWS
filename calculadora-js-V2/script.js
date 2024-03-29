@@ -1,3 +1,5 @@
+/*aaaaaaaa*/
+
 let menuVisible = false;
 let histVisible = false;
 let body = document.getElementsByTagName("body")[0];
