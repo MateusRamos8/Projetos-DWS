@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" version="24.8.6">
   <diagram name="Página-1" id="_c8Uqkrthpc-n8kxoMYG">
-    <mxGraphModel dx="988" dy="542" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="800" math="0" shadow="0">
+    <mxGraphModel dx="1432" dy="786" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="800" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -189,7 +189,7 @@
           <mxGeometry x="722.12" y="55" width="43" height="26" as="geometry" />
         </mxCell>
         <mxCell id="dXX3rMG10D_p6hD2lZ_1-19" value="id_usuario(FK)" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
-          <mxGeometry x="810.12" y="76" width="97" height="26" as="geometry" />
+          <mxGeometry x="854.12" y="108" width="97" height="26" as="geometry" />
         </mxCell>
         <mxCell id="dXX3rMG10D_p6hD2lZ_1-20" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=oval;endFill=0;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
@@ -380,7 +380,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="dXX3rMG10D_p6hD2lZ_1-85" value="url_imagem" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
-          <mxGeometry x="854.12" y="108" width="81" height="26" as="geometry" />
+          <mxGeometry x="810.12" y="76" width="81" height="26" as="geometry" />
         </mxCell>
         <mxCell id="dXX3rMG10D_p6hD2lZ_1-87" value="url_imagem" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
           <mxGeometry x="107" y="438" width="81" height="26" as="geometry" />
