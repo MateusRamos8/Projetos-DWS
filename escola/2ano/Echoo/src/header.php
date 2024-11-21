@@ -34,12 +34,32 @@ $jsFile = addCacheBuster('script.js');
             </div>
         </div>
         <div>
-            <a href="form_login.php" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-green-300 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
-                <span>Login</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
-                </svg>
-            </a>   
+        <?php
+            if(autenticado()){
+                ?>
+                    <a href="#" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-green-300 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
+                    <div class="bg-[url('<?=$_SESSION["url_imagem"]?>')] bg-cover bg-no-repeat bg-center w-10 h-10"></div>
+                        <span><?=$_SESSION["username"]?></span>
+                    </a>   
+                    <a href="sair.php" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-green-300 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
+                        <span>Sair</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+                        </svg>
+                    </a>   
+                <?php
+            }else{
+                ?>
+                    <a href="form_login.php" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-green-300 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
+                        <span>Login</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+                        </svg>
+                    </a>   
+                <?php
+            }
+        
+        ?>
         </div>
     </header>
     <nav class="flex flex-col gap-1 p-2 rounded-r-lg h-screen w-80 bg-zinc-900 z-20 absolute inset-0 -translate-x-80 transition-all duration-500 ease-in-out border-r-2 border-r-zinc-700 " id="nav_bar">

@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     require 'logica_autenticacao.php';
     
     if(autenticado()){
