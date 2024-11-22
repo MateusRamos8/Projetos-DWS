@@ -4,6 +4,8 @@ function addCacheBuster($file) {
     return $file . '?v=' . $randomNumber;
 }
 
+
+
 // Exemplo de uso:
 $cssFile = addCacheBuster('./output.css');
 $jsFile = addCacheBuster('script.js');
@@ -18,6 +20,20 @@ $jsFile = addCacheBuster('script.js');
     <link rel="shortcut icon" href="../images/logo-dark-recorte5.png" type="image/x-icon">
     <link href="<?=addCacheBuster($cssFile)?>" rel="stylesheet">
     <title>Echoo</title>
+    <?php
+        if(isset($_SESSION["url_imagem"])){
+            $url_img = $_SESSION["url_imagem"];
+            $bg_user = "url('$url_img')";
+            ?>
+            <style>
+                .bg_user{
+                    background-image: <?=$bg_user?>;
+                }
+            </style>
+            <?php
+            
+        }
+    ?>
 </head>
 <body class="p-0 bg-neutral-900">
     <div id="overlay" class="bg-[rgba(0,0,0,0.6)] invisible absolute inset-0 w-screen h-screen z-10 opacity-0 transition-all duration-500 ease-in-out pointer-events-none"></div>
@@ -33,14 +49,14 @@ $jsFile = addCacheBuster('script.js');
                 <span class="text-white cursor-default">Echoo</span>
             </div>
         </div>
-        <div>
+        <div class="flex gap-2">
         <?php
             if(autenticado()){
                 ?>
                     <a href="#" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-green-300 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
-                    <div class="bg-[url('<?=$_SESSION["url_imagem"]?>')] bg-cover bg-no-repeat bg-center w-10 h-10"></div>
+                    <div class="bg_user bg-cover bg-no-repeat bg-center w-10 h-10 rounded-full"></div>
                         <span><?=$_SESSION["username"]?></span>
-                    </a>   
+                    </a>
                     <a href="sair.php" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-green-300 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
                         <span>Sair</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
