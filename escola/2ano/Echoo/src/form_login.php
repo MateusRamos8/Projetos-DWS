@@ -17,12 +17,11 @@
 
     <form action="login.php" method="post" class="flex flex-col gap-4 ">
         <div class="flex flex-col">
-            <input type="text" name="username" id="username" placeholder="Username" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" required>
+            <input type="text" name="username" id="username" placeholder="Username" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" maxlength="200" required>
         </div>
         <div class="flex flex-col">
-            <input type="password" name="senha" id="senha" placeholder="Senha" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" required>
+            <input type="password" name="senha" id="senha" placeholder="Senha" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" maxlength="100" required>
         </div>
-
 
         <div class="flex flex-col gap-2">
             <button type="submit" class="block select-none w-full h-16 rounded-xl border-2 border-white">Entrar</button>

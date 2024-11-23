@@ -28,19 +28,19 @@
 
     <form action="inserir_usuario.php" method="post" class="flex flex-col gap-4">
         <div class="flex flex-col">
-            <input type="text" name="username" id="username" placeholder="Username" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" required>
+            <input type="text" name="username" id="username" placeholder="Username" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" maxlength="200" required>
         </div>
         <div class="flex flex-col">
-            <input type="url" name="url_imagem" id="url_imagem" placeholder="URL da Imagem de Perfil" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" required>
+            <input type="url" name="url_imagem" id="url_imagem" placeholder="URL da Imagem de Perfil" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" maxlength="300" required>
         </div>
         <div class="flex flex-col">
-            <input type="email" name="email" id="email" placeholder="E-mail" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" required>
+            <input type="email" name="email" id="email" placeholder="E-mail" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" maxlength="200" required>
         </div>
         <div class="flex flex-col">
-            <input type="password" name="senha" id="senha" placeholder="Senha" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" required>
+            <input type="password" name="senha" id="senha" placeholder="Senha" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" maxlength="100" required>
         </div>
         <div class="flex flex-col">
-            <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Confirmar Senha" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" onblur="verifica_senhas();" required>
+            <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Confirmar Senha" class="select-none bg-transparent w-80 border-b-white border-2 rounded-xl p-3 focus:outline-none" onblur="verifica_senhas();" maxlength="100" required>
         </div>
 
 
