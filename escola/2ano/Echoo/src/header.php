@@ -116,7 +116,7 @@ $jsFile = addCacheBuster('script.js');
         <div class="flex justify-between mb-2 p-2">
             <div class="bg-logoDark bg-cover bg-no-repeat bg-center w-16 h-16"></div>
             <div class="flex items-center justify-center size-16">
-                <button class="flex justify-center items-center p-1  rounded-lg " id="nav_bar_btn">
+                <button class="flex justify-center items-center p-1  rounded-lg " id="nav_bar_close_btn">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="stroke-zinc-300 size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>

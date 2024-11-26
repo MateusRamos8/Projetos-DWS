@@ -7,6 +7,14 @@ function autenticado(){
     }
 }
 
+function administrador(){
+    if(isset($_SESSION["administrador"])){
+        if($_SESSION["administrador"] == 1){
+            return true;
+        }
+    }
+}
+
 function nome_usuario(){
     return $_SESSION["nome"];
 }
