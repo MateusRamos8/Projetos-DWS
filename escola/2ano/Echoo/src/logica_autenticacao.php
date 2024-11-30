@@ -9,7 +9,15 @@ function autenticado(){
 
 function administrador(){
     if(isset($_SESSION["administrador"])){
-        if($_SESSION["administrador"] == 1){
+        if($_SESSION["administrador"] == 1 || administradorMax()){
+            return true;
+        }
+    }
+}
+
+function administradorMax(){
+    if(isset($_SESSION["administrador"])){
+        if($_SESSION["administrador"] == 9){
             return true;
         }
     }
