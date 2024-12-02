@@ -77,7 +77,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                 </select>
             </div>
             <div>
-                <input type="text" id="search" name="search" class="select-none bg-transparent w-[35vw] h-14 border-b-white border-2 rounded-xl p-3 focus:outline-none" maxlength="200" required placeholder="Dados da Busca">
+                <input type="text" id="busca" name="busca" class="select-none bg-transparent w-[35vw] h-14 border-b-white border-2 rounded-xl p-3 focus:outline-none" maxlength="200" required placeholder="Dados da Busca">
             </div>
             <div>
                 <button type="submit" class="block select-none w-50 h-14 rounded-xl border-2 border-white px-4">Pesquisar</button>
@@ -88,9 +88,9 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
     if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
     ?>
 
-        <div class="flex justify-center items-center">
-            <div class="text-zinc-500" role="alert">
-                Você está buscando por "<mark><?= $buscaOriginal ?></mark>", <a href="listagem.php?ordem=<?= $ordem ?>">limpar</a>.
+        <div class="flex justify-center items-center mb-5">
+            <div class="text-zinc-300" role="alert">
+                Você está buscando por <mark>"<?= $buscaOriginal ?>"</mark>, <a href="gerenciar_usuarios.php?ordem=<?= $ordem ?>">limpar</a>.
             </div>
         </div>
         <hr>
@@ -224,7 +224,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                                         }else{
                                         ?>
                             
-                                        <a href="promover_admin.php?id=<?= $row["id"]?>" class="flex items-center justify-center gap-1 bg-indigo-500 text-neutral-200 py-3 px-4 rounded-lg">
+                                        <a href="promover_admin.php?id=<?= $row["id"]?>" class="flex items-center justify-center gap-1 bg-indigo-500 text-neutral-200 py-3 px-4 rounded-lg select-none">
                                             Promover Admin
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-up-dash"><path d="M9 19h6"/><path d="M9 15v-3H5l7-7 7 7h-4v3H9z"/></svg>
                                             
@@ -236,7 +236,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                         </td>
                         <td class="rounded-lg p-3 text-sm text-gray-700">
                             <div class="flex justify-around items-center">
-                                <a href="alterar_usuario.php?id=<?=$row["id"]?>" class="flex items-center justify-center gap-1 bg-amber-400 text-neutral-800 py-3 px-4 rounded-lg" onclick="if(!confirm('Tem certeza que deseja promover?')){ return false;}">
+                                <a href="form_editar_usuarios.php?id=<?=$row["id"]?>&ad=<?=$row["administrador"]?>" class="flex items-center justify-center gap-1 bg-amber-400 text-neutral-800 py-3 px-4 rounded-lg select-none">
                                 Editar
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
@@ -246,7 +246,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                                 <?php
                                 if(administradorMax() || $row["id"] == $_SESSION["id_usuario"] || $row["administrador"] == 0){
                                     ?>
-                                    <a href="excluir_usuarios.php?id=<?=$row["id"]?>&ad=<?=$row["administrador"]?>" class="flex items-center justify-center gap-1 bg-red-500 text-neutral-200 py-3 px-4 rounded-lg" onclick="if(!confirm('Tem certeza que deseja excluir?')){ return false;}">
+                                    <a href="excluir_usuarios.php?id=<?=$row["id"]?>&ad=<?=$row["administrador"]?>" class="flex items-center justify-center gap-1 bg-red-500 text-neutral-200 py-3 px-4 rounded-lg select-none" onclick="if(!confirm('Tem certeza que deseja excluir?')){ return false;}">
                                         Excluir
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2 size-5"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
                                         

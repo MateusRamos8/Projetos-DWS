@@ -12,7 +12,7 @@ $jsFile = addCacheBuster('script.js');
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,9 +69,9 @@ $jsFile = addCacheBuster('script.js');
         }
     ?>
 </head>
-<body class="p-0 bg-neutral-900 overflow-x-hidden">
+<body class="p-0 bg-neutral-900 overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-neutral-800 [&::-webkit-scrollbar-thumb]:bg-rose-900 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full">
     <div id="overlay" class="bg-[rgba(0,0,0,0.6)] invisible absolute inset-0 w-screen h-screen z-10 opacity-0 transition-all duration-500 ease-in-out pointer-events-none"></div>
-    <header class="w-screen h-20 bg-zinc-950 flex justify-between items-center p-4 border-b-2 border-solid border-b-green-300 select-none">
+    <header class="w-screen h-20 bg-zinc-950 flex justify-between items-center py-4 px-6 border-b-2 border-solid border-b-rose-900 select-none">
         <div class="flex items-center gap-2">
             <button class="p-1 border-2 border-zinc-700 rounded-lg" id="nav_bar_btn">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="stroke-zinc-300 size-7">
@@ -87,11 +87,11 @@ $jsFile = addCacheBuster('script.js');
         <?php
             if(autenticado()){
                 ?>
-                    <a href="#" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-green-300 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
+                    <a href="visualizar_perfil.php?id=<?=$_SESSION["id_usuario"]?>" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-rose-900 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
                     <div class="bg_user bg-cover bg-no-repeat bg-center w-10 h-10 rounded-full"></div>
                         <span><?=$_SESSION["username"]?></span>
                     </a>
-                    <a href="sair.php" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-green-300 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
+                    <a href="sair.php" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-rose-900 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
                         <span>Sair</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
@@ -100,7 +100,7 @@ $jsFile = addCacheBuster('script.js');
                 <?php
             }else{
                 ?>
-                    <a href="form_login.php" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-green-300 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
+                    <a href="form_login.php" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-rose-900 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
                         <span>Login</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
@@ -149,6 +149,12 @@ $jsFile = addCacheBuster('script.js');
                 }
             ?>
 
+            <a href="pesquisar_usuarios.php" class="flex items-center gap-2 cursor-pointer no-underline text-neutral-300 rounded-md hover:bg-zinc-700 px-3 py-2 transition-all duration-200 ease-in">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-zinc-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+                <span>Pesquisar Usuários</span>
+            </a>
             <a href="" class="flex items-center gap-2 cursor-pointer no-underline text-neutral-300 rounded-md hover:bg-zinc-700 px-3 py-2 transition-all duration-200 ease-in">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-zinc-500">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
