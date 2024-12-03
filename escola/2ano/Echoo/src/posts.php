@@ -24,7 +24,7 @@ require 'header.php';
     <h1 class="text-white text-5xl">Posts</h1>
     
     <div class="flex justify-center">
-        <button id="btnOpenModal" type="button" class="text-white bg-green-700 py-4 px-6 rounded-xl">Criar Post</button>
+        <button id="btnOpenModal" type="button" class="text-white bg-rose-700 py-4 px-6 rounded-xl">Criar Post</button>
     </div>
 
     <section class="flex flex-wrap">

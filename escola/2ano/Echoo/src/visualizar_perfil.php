@@ -12,13 +12,14 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
 
 
-$sql = "SELECT p.id, p.titulo, p.url_imagem, p.data_criacao, u.username
-        FROM posts p
-        JOIN usuarios u ON p.id_usuario = u.id
+$sql = "SELECT p.id, p.titulo, p.url_imagem, p.data_criacao
+        FROM posts p 
+        WHERE p.id_usuario = ?
         ORDER BY p.data_criacao DESC";
 
 try {
-    $stmt = $conn->query($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$id]);
     $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
     $error = $e->getMessage();
@@ -35,7 +36,7 @@ $sql = "SELECT id, username, url_imagem, email, administrador FROM usuarios WHER
 try{
     $stmt = $conn->prepare($sql);
     $result = $stmt->execute([$id]);
-    $rowUser = $stmt->fetch();
+    $user = $stmt->fetch();
 }catch(Exception $e){
     
     $error = $e->getMessage();
@@ -46,6 +47,13 @@ try{
     die();
 }
 
+if($stmt->rowCount() <= 0){
+    $_SESSION["result"] = false;
+    $_SESSION["msg_erro"] = "Erro ao carregar o usuário.";
+    $_SESSION["erro"] = "usuário inexistente";
+    redireciona("index.php");
+    die();
+}
 
 
 require "header.php";
@@ -55,13 +63,13 @@ require "header.php";
     <div class="flex flex-col w-[800px]">
         <div class="flex gap-10 justify-center text-lg">
             <?php
-                $urlUser = $rowUser['url_imagem'];
+                $urlUser = $user['url_imagem'];
                 $styleUserBg = "style=\"background-image: url('" . $urlUser . "');\""
             ?>
             <div <?=$styleUserBg?> class="bg-cover bg-no-repeat bg-center rounded-full size-52"></div>
             <div class="flex flex-col gap-4 w-[600px]">
                 <div class="flex items-center justify-between">
-                    <a href=""><h2 class="text-2xl"><?=$rowUser["username"]?></h2></a>
+                    <a href=""><h2 class="text-2xl"><?=$user["username"]?></h2></a>
                     <div class="flex gap-4 items-center">
                         <?php
                         if($_SESSION["id_usuario"] == $id){

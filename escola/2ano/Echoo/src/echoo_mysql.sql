@@ -4,6 +4,13 @@ CREATE TABLE Usuarios (
     email VARCHAR(200) UNIQUE NOT NULL,
     senha VARCHAR(100) NOT NULL,
     url_imagem VARCHAR(300) DEFAULT 'default-avatar.png',
+    --Valores Novos a serem adicionados
+    nome VARCHAR(200) NOT NULL,
+    bio VARCHAR(200) NOT NULL,
+    qtd_posts INTEGER NOT NULL DEFAULT 0,
+    seguidores INTEGER NOT NULL DEFAULT 0,
+    seguindo INTEGER NOT NULL DEFAULT 0,
+    --
     data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
     administrador INT NOT NULL DEFAULT 0
 ) ENGINE=InnoDB;
@@ -26,6 +33,33 @@ CREATE TABLE Posts (
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(id)
         ON DELETE CASCADE
 ) ENGINE=InnoDB;
+
+
+DELIMITER $$
+
+CREATE TRIGGER after_post_insert
+AFTER INSERT ON posts
+FOR EACH ROW
+BEGIN
+    UPDATE usuarios
+    SET qtd_posts = qtd_posts + 1
+    WHERE id = NEW.usuario_id;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER after_post_delete
+AFTER DELETE ON posts
+FOR EACH ROW
+BEGIN
+    UPDATE usuarios
+    SET qtd_posts = qtd_posts - 1
+    WHERE id = OLD.usuario_id;
+END$$
+
+DELIMITER ;
 
 
 

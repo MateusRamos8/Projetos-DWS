@@ -145,6 +145,10 @@ $jsFile = addCacheBuster('script.js');
                 </svg>
                 <span>Gerenciar Usuários</span>
             </a>
+            <a href="gerenciar_posts.php" class="flex items-center gap-2 cursor-pointer no-underline text-neutral-300 rounded-md hover:bg-zinc-700 px-3 py-2 transition-all duration-200 ease-in">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folders size-6 stroke-zinc-500"><path d="M20 17a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.9a2 2 0 0 1-1.69-.9l-.81-1.2a2 2 0 0 0-1.67-.9H8a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2Z"/><path d="M2 8v11a2 2 0 0 0 2 2h14"/></svg>
+                <span>Gerenciar Posts</span>
+            </a>
             <?php
                 }
             ?>
