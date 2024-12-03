@@ -100,7 +100,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
 
     <div>
         <table class="w-full bg-gray-200 text-zinc-700 rounded-lg">
-            <thead class="bg-gray-50 border-b-2 border-gray-400">
+            <thead class="bg-gray-50 border-b-2 border-gray-400 rounded-lg">
                 <tr>
                     <?php
                     if ($ordem == "username") {
@@ -109,21 +109,21 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                     ?>
 
 
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center w-20">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-center w-20">
                             <a href="?ordem=id">ID</a>
                         </th>
 
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center w-52">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-center w-52">
                             Imagem de Perfil
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left">
                             Username<i data-feather="chevron-down"></i>
                         </th>
 
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left">
                             <a href="?ordem=email">Email</a>
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left w-52">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left w-52">
                             Data de Criação
                         </th>
 
@@ -133,21 +133,21 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
 
                     ?>
 
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center w-20">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-center w-20">
                             ID<i data-feather="chevron-down"></i>
                         </th>
 
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center w-52">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-center w-52">
                             Imagem de Perfil
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left">
                             <a href="?ordem=username">Username</a>
                         </th>
 
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left">
                             <a href="?ordem=email">Email</a>
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left w-52">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left w-52">
                             Data de Criação
                         </th>
 
@@ -179,22 +179,22 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                     <?php
                     }
                     ?>
-                    <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center w-56">Administrador</th>
-                    <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center">Ferramentas</th>
+                    <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-center w-56">Administrador</th>
+                    <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-center">Ferramentas</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="rounded-lg">
                 <?php
                 while ($row = $stmt->fetch()) {
                 ?>
-                    <tr class="even:bg-gray-50">
+                    <tr class="even:bg-gray-50 rounded-lg">
 
 
-                        <td class="rounded-lg p-3 text-sm text-gray-700 w-20 text-center"><?= $row["id"] ?></td>
+                        <td class=" p-3 text-sm text-gray-700 w-20 text-center"><?= $row["id"] ?></td>
 
 
 
-                        <td class="rounded-lg p-3 text-sm text-gray-700 w-40">
+                        <td class=" p-3 text-sm text-gray-700 w-40">
                             <?php
                             $urlImagemList = $row["url_imagem"];
                             $bg_user_list = "style=\"background-image: url('$urlImagemList');\""
@@ -203,13 +203,13 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                                 <div <?= $bg_user_list ?> class="bg-cover bg-no-repeat bg-center w-10 h-10 rounded-full border-[1px] border-black"></div>
                             </div>
                         </td>
-                        <td class="rounded-lg p-3 text-sm text-gray-700"><?= $row["username"] ?></td>
+                        <td class=" p-3 text-sm text-gray-700"><?= $row["username"] ?></td>
 
 
 
-                        <td class="rounded-lg p-3 text-sm text-gray-700"><?= $row["email"] ?></td>
-                        <td class="rounded-lg p-3 text-sm text-gray-700"><?= $row["data_criacao"] ?></td>
-                        <td class="rounded-lg p-3 text-sm text-gray-700 ">
+                        <td class=" p-3 text-sm text-gray-700"><?= $row["email"] ?></td>
+                        <td class=" p-3 text-sm text-gray-700"><?= $row["data_criacao"] ?></td>
+                        <td class=" p-3 text-sm text-gray-700 ">
                             <div class="flex justify-center">
                                 <?php
                                     if($row["administrador"] == 1){
@@ -224,7 +224,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                                         }else{
                                         ?>
                             
-                                        <a href="promover_admin.php?id=<?= $row["id"]?>" class="flex items-center justify-center gap-1 bg-indigo-500 text-neutral-200 py-3 px-4 rounded-lg select-none">
+                                        <a href="promover_admin.php?id=<?= $row["id"]?>" class="flex items-center justify-center gap-1 bg-indigo-500 text-neutral-200 py-3 px-4  select-none rounded-lg">
                                             Promover Admin
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-up-dash"><path d="M9 19h6"/><path d="M9 15v-3H5l7-7 7 7h-4v3H9z"/></svg>
                                             
@@ -234,7 +234,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                                         ?>
                             </div>
                         </td>
-                        <td class="rounded-lg p-3 text-sm text-gray-700">
+                        <td class="p-3 text-sm text-gray-700">
                             <div class="flex justify-around items-center">
                                 <a href="form_editar_usuarios.php?id=<?=$row["id"]?>&ad=<?=$row["administrador"]?>" class="flex items-center justify-center gap-1 bg-amber-400 text-neutral-800 py-3 px-4 rounded-lg select-none">
                                 Editar

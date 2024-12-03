@@ -114,18 +114,18 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                         <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center w-52">
                             Imagem de Perfil
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left">
                             Username<i data-feather="chevron-down"></i>
                         </th>
 
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center w-20">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-center w-20">
                             <a href="?ordem=p.id">ID Post</a>
                         </th>
 
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left">
                             <a href="?ordem=p.titulo">Título</a>
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left w-52">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left w-52">
                             Data de Criação
                         </th>
 
@@ -138,16 +138,16 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                         <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center w-52">
                             Imagem de Perfil
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left">
                             <a href="?ordem=u.username">Username</a>
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center w-20">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-center w-20">
                             ID Post<i data-feather="chevron-down"></i>
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left">
                             <a href="?ordem=p.titulo">Título</a>
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left w-52">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left w-52">
                             Data de Criação
                         </th>
 
@@ -162,17 +162,17 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                         <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center w-52">
                             Imagem de Perfil
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left">
                             <a href="?ordem=u.username">Username</a>
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-center w-20">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-center w-20">
                             <a href="?ordem=p.id">ID Post</a>
                         </th>
 
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left">
                             Título<i data-feather="chevron-down"></i>
                         </th>
-                        <th scope="col" class="rounded-lg p-3 text-sm font-semibold tracking-wide text-left w-52">
+                        <th scope="col" class="p-3 text-sm font-semibold tracking-wide text-left w-52">
                             Data de Criação
                         </th>
 
@@ -194,7 +194,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
 
 
 
-                        <td class="rounded-lg p-3 text-sm text-gray-700 w-40">
+                        <td class="p-3 text-sm text-gray-700 w-40">
                             <?php
                             $urlImagemList = $row["u_url_imagem"];
                             $bg_user_list = "style=\"background-image: url('$urlImagemList');\""
@@ -203,7 +203,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                                 <div <?= $bg_user_list ?> class="bg-cover bg-no-repeat bg-center w-10 h-10 rounded-full border-[1px] border-black"></div>
                             </div>
                         </td>
-                        <td class="rounded-lg p-3 text-sm text-gray-700">
+                        <td class="p-3 text-sm text-gray-700">
                             <div class="flex gap-2">
                                 
                                 <?php
@@ -222,14 +222,14 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                             </div>
                         </td>
 
-                        <td class="rounded-lg p-3 text-sm text-gray-700 w-20 text-center"><?= $row["p_id"] ?></td>
+                        <td class="p-3 text-sm text-gray-700 w-20 text-center"><?= $row["p_id"] ?></td>
 
 
 
-                        <td class="rounded-lg p-3 text-sm text-gray-700"><?= $row["p_titulo"] ?></td>
-                        <td class="rounded-lg p-3 text-sm text-gray-700"><?= $row["p_data_criacao"] ?></td>
+                        <td class="p-3 text-sm text-gray-700"><?= $row["p_titulo"] ?></td>
+                        <td class="p-3 text-sm text-gray-700"><?= $row["p_data_criacao"] ?></td>
 
-                        <td class="rounded-lg p-3 text-sm text-gray-700">
+                        <td class="p-3 text-sm text-gray-700">
                             <div class="flex justify-around items-center">
                                 <a href="#" class="flex items-center justify-center gap-1 bg-amber-400 text-neutral-800 py-3 px-4 rounded-lg select-none">
                                 Editar
