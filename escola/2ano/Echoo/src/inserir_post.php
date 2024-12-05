@@ -13,11 +13,15 @@ if (!$data || !isset($data['titulo'], $data['url_imagem'], $data['blocks'])) {
     exit;
 }
 
+
+
 $titulo = filter_var($data['titulo'], FILTER_SANITIZE_SPECIAL_CHARS);
 $url_imagem = filter_var($data['url_imagem'], FILTER_SANITIZE_URL);
 $conteudo = json_encode($data['blocks']);
 $data_criacao = date('Y-m-d H:i:s');
 $id_usuario = $_SESSION['id_usuario'] ?? null;
+
+
 
 if (!$titulo || !$url_imagem || !$conteudo || !$id_usuario) {
     http_response_code(400);

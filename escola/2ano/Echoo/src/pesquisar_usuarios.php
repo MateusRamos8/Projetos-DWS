@@ -23,12 +23,29 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
 
     $busca = "%" . $busca . "%";
 
-    $sql = "SELECT username, url_imagem FROM Usuarios WHERE username like ? ORDER BY $ordem";
+    $sql = "SELECT id, username, url_imagem,
+                CASE 
+                    WHEN s.id_seguido IS NOT NULL THEN 'Seguindo'
+                    ELSE 'Seguir'
+                END AS status_seguir
+            FROM usuarios u
+            LEFT JOIN seguidores s
+            ON u.id = s.id_seguido AND s.id_seguidor = ?
+            WHERE username LIKE ? AND u.id != ? ORDER BY $ordem";
     $stmt = $conn->prepare($sql);
-    $result = $stmt->execute([$busca]);
+    $result = $stmt->execute([$_SESSION["id_usuario"], $busca, $_SESSION["id_usuario"]]);
 }else {
-    $sql = "SELECT username, url_imagem FROM Usuarios ORDER BY $ordem";
-    $stmt = $conn->query($sql);
+    $sql = "SELECT id, username, url_imagem,
+                CASE 
+                    WHEN s.id_seguido IS NOT NULL THEN 'Seguindo'
+                    ELSE 'Seguir'
+                END AS status_seguir
+            FROM usuarios u
+            LEFT JOIN seguidores s
+            ON u.id = s.id_seguido AND s.id_seguidor = ?
+            WHERE u.id != ? ORDER BY $ordem";
+    $stmt = $conn->prepare($sql);
+    $result = $stmt->execute([$_SESSION["id_usuario"], $_SESSION["id_usuario"]]);
 }
 
 ?>
@@ -72,11 +89,26 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                         <div><?=$row['username']?></div>
                     </div>
                     <div>
-                        <a href="" class="flex items-center justify-center gap-1 bg-indigo-500 text-neutral-200 py-3 px-4 rounded-lg select-none">
-                            Seguir
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-plus"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="M19 16v6"/><path d="M22 19h-6"/></svg>
-                            
-                        </a>
+                        <?php
+                            if($row['status_seguir'] == 'Seguindo'){
+                                ?>
+                                <a href="" class="flex items-center justify-center gap-1 bg-indigo-500 hover:bg-red-500 text-neutral-200 py-3 px-4 rounded-lg select-none group transition-all duration-300 ease-in-out">
+                                    Seguindo
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round group-hover:hidden group-hover:opacity-0 transition-all duration-300 ease-in-out"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-x hidden opacity-0 group-hover:inline-block group-hover:opacity-100 transition-all duration-300 ease-in-out"><path d="M2 21a8 8 0 0 1 11.873-7"/><circle cx="10" cy="8" r="5"/><path d="m17 17 5 5"/><path d="m22 17-5 5"/></svg>
+                                 </a>
+                                 <?php
+                            }else{
+                            ?>
+                                    <a href="seguir.php?id=<?=$row['id']?>" class="flex items-center justify-center gap-1 bg-indigo-500 text-neutral-200 py-3 px-4 rounded-lg select-none">
+                                        Seguir
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-plus"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="M19 16v6"/><path d="M22 19h-6"/></svg>
+                                    
+                                     </a>
+                                <?php
+                            }
+                        ?>
+                        
                     </div>
                     
                 </div>

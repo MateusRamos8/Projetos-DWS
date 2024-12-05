@@ -30,7 +30,7 @@ try {
     die();
 }
 
-$sql = "SELECT id, username, url_imagem, email, administrador FROM usuarios WHERE id = ? ";
+$sql = "SELECT id, nome, bio, qtd_posts, seguidores, seguindo, username, url_imagem, email, administrador FROM usuarios WHERE id = ? ";
 
 
 try{
@@ -74,10 +74,9 @@ require "header.php";
                         <?php
                         if($_SESSION["id_usuario"] == $id){
                             ?>
-                            <a href="" class="flex items-center justify-center gap-1 bg-rose-900 text-neutral-200 py-2 px-4 rounded-lg select-none">Editar Perfil</a>
-                            <a href="" >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bolt"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><circle cx="12" cy="12" r="4"/></svg>
-                            </a>
+                            <a href="" class="flex items-center justify-center gap-2 bg-rose-900 text-neutral-200 py-2 px-4 rounded-lg select-none">
+                                <span>Editar Perfil</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bolt size-5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><circle cx="12" cy="12" r="4"/></svg></a>
                             <?php
                         }else{
                             ?>
@@ -105,13 +104,13 @@ require "header.php";
                     </div>
                 </div>
                 <div class="flex gap-4">
-                    <a href=""><strong>99999</strong> publicações</a>
-                    <a href=""><strong>99999</strong> seguidores</a>
-                    <a href=""><strong>99999</strong> seguindo</a>
+                    <a href=""><strong><?=$user["qtd_posts"]?></strong> publicações</a>
+                    <a href=""><strong><?=$user["seguidores"]?></strong> seguidores</a>
+                    <a href=""><strong><?=$user["seguindo"]?></strong> seguindo</a>
                 </div>
-                <div class="flex flex-col gap-2">
-                    <h3>NOME</h3>
-                    <p>BIO</p>
+                <div class="flex flex-col gap-4">
+                    <h3 class="font-bold text-xl"><?=$user["nome"]?></h3>
+                    <p><?=$user["bio"]?></p>
                 </div>
             </div>
         </div>

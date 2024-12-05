@@ -9,6 +9,7 @@ function addCacheBuster($file) {
 // Exemplo de uso:
 $cssFile = addCacheBuster('./output.css');
 $jsFile = addCacheBuster('script.js');
+$editorjsFile = addCacheBuster('./editor.js');
 ?>
 
 <!DOCTYPE html>

@@ -17,6 +17,8 @@ try {
     exit;
 }
 
+
+
 require 'header.php';
 ?>
 
@@ -32,7 +34,7 @@ require 'header.php';
         if (!empty($posts)) {
             foreach ($posts as $post) {
                 $urlPost = $post['url_imagem'];
-                $styleBg = "style=\"background-image: url('" . $urlPost . "');\""
+                $styleBg = "style=\"background-image: url('" . $urlPost . "');\"";
                 ?>
                 <div class="post_item border-2 border-white m-4 rounded-xl text-white cursor-pointer" data-id="<?= htmlspecialchars($post['id']) ?>">
                     <div <?=$styleBg?> class="h-40 bg-cover bg-center rounded-t-xl border-b-4 border-b-neutral-300"></div>
@@ -63,7 +65,7 @@ require 'header.php';
     </div>
 
     <!-- Modal para criar novo post -->
-    <div id="modal" class="hidden fixed inset-0 w-[100%] h-[100%] bg-[rgba(0,0,0,0.5)] justify-center items-center">
+    <div id="modal" class="hidden fixed inset-0 w-[100%] h-[100%] bg-[rgba(0,0,0,0.5)] justify-center items-center text-black">
         <div class="bg-white p-5 rounded-md w-[90%] max-w-[800px] max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="m-0">Criar Novo Post</h2>
@@ -78,15 +80,18 @@ require 'header.php';
         </div>
     </div>
 
+
+    
+
+
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/list@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image"></script>
 <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@2.7.3/dist/quote.umd.min.js"></script>
-<script src="./editor.js?v=2"></script>
+<script src="<?=addCacheBuster(file: $editorjsFile)?>"></script>
 
 <?php
 require 'footer.php';

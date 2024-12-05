@@ -1,0 +1,5 @@
+{
+    "require": {
+        "edd-g/editorjs-simple-html-parser": "^1.3"
+    }
+}

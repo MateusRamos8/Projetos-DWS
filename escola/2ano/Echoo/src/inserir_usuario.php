@@ -9,6 +9,7 @@ require "logica_autenticacao.php";
 
 
    $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+   $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
    $senha = filter_input(INPUT_POST, "senha");
    $url_imagem = filter_input(INPUT_POST,"url_imagem", FILTER_VALIDATE_URL)
