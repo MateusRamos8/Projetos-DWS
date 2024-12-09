@@ -11,32 +11,33 @@ $adm = filter_input(INPUT_GET, "ad", FILTER_VALIDATE_INT);
 if(!autenticado()){
     redireciona("index.php");
     $_SESSION["result"] = false;
-    $_SESSION["msg_erro"] = "Operação de edição não permitida.";
+    $_SESSION["titulo"] = "Operação de edição não permitida.";
+    $_SESSION["msg"] = "Você não tem permissão para isso.";
     die();
 }elseif($_SESSION["id_usuario"] != $id && !administrador()){
     redireciona("index.php");
     $_SESSION["result"] = false;
-    $_SESSION["msg_erro"] = "Operação não permitida.";
-    $_SESSION["erro"] = "Você está tentando editar um usuário que não é seu.";
+    $_SESSION["titulo"] = "Operação não permitida.";
+    $_SESSION["msg"] = "Você está tentando editar um usuário que não é seu.";
     die();
 }elseif(administrador() && $_SESSION["id_usuario"] != $id && $adm != 0 && !administradorMax()){
     redireciona("gerenciar_usuarios.php");
     $_SESSION["result"] = false;
-    $_SESSION["msg_erro"] = "Operação não permitida";
-    $_SESSION["erro"] = "Você está tentando editar um administrador que não é você.";
+    $_SESSION["titulo"] = "Operação não permitida";
+    $_SESSION["msg"] = "Você está tentando editar um administrador que não é você.";
     die();
 }
 
 if(!isset($_GET["id"]) || !isset($_GET["ad"])){
     if(administrador()){
         $_SESSION["result"] = false;
-        $_SESSION["msg_erro"] = "Falha na edição.";
-        $_SESSION["erro"] = "Parâmetros não suficientes para realizar a edição.";
+        $_SESSION["titulo"] = "Falha na edição.";
+        $_SESSION["msg"] = "Parâmetros não suficientes para realizar a edição.";
         redireciona("gerenciar_usuarios.php");
     }else{
         $_SESSION["result"] = false;
-        $_SESSION["msg_erro"] = "Falha na edição.";
-        $_SESSION["erro"] = "Parâmetros não suficientes para realizar a edição.";
+        $_SESSION["titulo"] = "Falha na edição.";
+        $_SESSION["msg"] = "Parâmetros não suficientes para realizar a edição.";
         redireciona("index.php");
     }
 }
@@ -52,7 +53,7 @@ try{
     
     $error = $e->getMessage();
     $_SESSION["result"] = false;
-    $_SESSION["erro"] = $error;
+    $_SESSION["msg"] = $error;
     if(administrador()){
         redireciona("gerenciar_usuarios.php");
     }else{
@@ -105,12 +106,12 @@ require "header.php";
             }else{
                 ?>
                 <div class="w-96 p-5 text-red-900 font-bold bg-red-200 border-4 border-red-700 rounded-md">
-                    <h4><?=$_SESSION["msg_erro"]?></h4>
-                    <p><?=$_SESSION["erro"]?></p>
+                    <h4><?=$_SESSION["titulo"]?></h4>
+                    <p><?=$_SESSION["msg"]?></p>
                 </div>
                 <?php
-                unset($_SESSION["msg_erro"]);
-                unset($_SESSION["erro"]);
+                unset($_SESSION["titulo"]);
+                unset($_SESSION["msg"]);
             }
             unset($_SESSION["result"]);
         }

@@ -32,7 +32,8 @@ require "logica_autenticacao.php";
    if($result == true){
       //deu bom
       $_SESSION["result"] = $result;
-      $_SESSION["msg_sucesso"] = "Dados gravados com sucesso!";
+      $_SESSION["titulo"] = "Sucesso!";
+      $_SESSION["msg"] = "Dados gravados com sucesso!";
   }else{
       //deu ruim
       //SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'sla@gmail.com' for key 'email'
@@ -44,8 +45,8 @@ require "logica_autenticacao.php";
       }
 
       $_SESSION["result"] = $result;
-      $_SESSION["msg_erro"] = "Falha ao efetuar gravação";
-      $_SESSION["erro"] = $error;
+      $_SESSION["titulo"] = "Falha ao efetuar gravação";
+      $_SESSION["msg"] = $error;
   }
   
   redireciona("form_cadastrar.php");

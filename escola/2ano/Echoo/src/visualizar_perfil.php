@@ -4,9 +4,13 @@ require "logica_autenticacao.php";
 require "conexao.php";
 
 if(!autenticado()){
+    $_SESSION["result"] = false;
+    $_SESSION["titulo"] = "Operação não permitida!";
+    $_SESSION["msg"] = "Você não tem permissão para acessar essa página.";
     redireciona("index.php");
     die();
 }
+$_SESSION['last_page'] = $_SERVER['REQUEST_URI'];
 
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
@@ -24,8 +28,8 @@ try {
 } catch (Exception $e) {
     $error = $e->getMessage();
     $_SESSION["result"] = false;
-    $_SESSION["msg_erro"] = "Erro ao carregar os posts.";
-    $_SESSION["erro"] = $error;
+    $_SESSION["titulo"] = "Erro ao carregar os posts.";
+    $_SESSION["msg"] = $error;
     redireciona("index.php");
     die();
 }
@@ -41,16 +45,16 @@ try{
     
     $error = $e->getMessage();
     $_SESSION["result"] = false;
-    $_SESSION["msg_erro"] = "Erro ao carregar o usuário.";
-    $_SESSION["erro"] = $error;
+    $_SESSION["titulo"] = "Erro ao carregar o usuário.";
+    $_SESSION["msg"] = $error;
     redireciona("index.php");
     die();
 }
 
 if($stmt->rowCount() <= 0){
     $_SESSION["result"] = false;
-    $_SESSION["msg_erro"] = "Erro ao carregar o usuário.";
-    $_SESSION["erro"] = "usuário inexistente";
+    $_SESSION["titulo"] = "Erro ao carregar o usuário.";
+    $_SESSION["msg"] = "usuário inexistente";
     redireciona("index.php");
     die();
 }

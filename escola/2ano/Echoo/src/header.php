@@ -19,6 +19,10 @@ $editorjsFile = addCacheBuster('./editor.js');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-compatible" content="IE=edge">
     <link rel="shortcut icon" href="../images/logo-dark-recorte5.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     
     <link href="<?=addCacheBuster($cssFile)?>" rel="stylesheet"> 
 
@@ -55,23 +59,43 @@ $editorjsFile = addCacheBuster('./editor.js');
   <!---->
 
     <title>Echoo</title>
-    <?php
-        if(isset($_SESSION["url_imagem"])){
-            $url_img = $_SESSION["url_imagem"];
-            $bg_user = "url('$url_img')";
-            ?>
-            <style>
-                .bg_user{
-                    background-image: <?=$bg_user?>;
-                }
-            </style>
-            <?php
-            
+    <style>
+       
+
+ 
+        .montserrat{
+            font-family: "Montserrat", serif;
         }
+
+        .merriweather{
+            font-family: "Merriweather", serif;
+        }
+
+        .source-code-pro{
+            font-family: "Source Code Pro", serif;
+        }
+
+
+
+    <?php
+
+        if(isset($overflow)){
+            ?>
+                body{
+                    overflow: hidden !important;
+                }
+            <?php
+        }
+
+        
+        
     ?>
+
+    
+    </style>
 </head>
-<body class="p-0 bg-neutral-900 overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-neutral-800 [&::-webkit-scrollbar-thumb]:bg-rose-900 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full">
-    <div id="overlay" class="bg-[rgba(0,0,0,0.6)] invisible absolute inset-0 w-screen h-screen z-10 opacity-0 transition-all duration-500 ease-in-out pointer-events-none"></div>
+<body class=" montserrat p-0 bg-neutral-900 overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-neutral-800 [&::-webkit-scrollbar-thumb]:bg-rose-900 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full">
+    <div id="overlay" class="bg-[rgba(0,0,0,0.6)] invisible absolute inset-0 w-screen h-screen z-40 opacity-0 transition-all duration-500 ease-in-out pointer-events-none"></div>
     <header class="w-screen h-20 bg-zinc-950 flex justify-between items-center py-4 px-6 border-b-2 border-solid border-b-rose-900 select-none">
         <div class="flex items-center gap-2">
             <button class="p-1 border-2 border-zinc-700 rounded-lg" id="nav_bar_btn">
@@ -79,17 +103,32 @@ $editorjsFile = addCacheBuster('./editor.js');
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                 </svg>
             </button>
-            <div class="flex items-center gap-1">
+            <a href="index.php" class="flex items-center gap-1 cursor-pointer">
                 <div class="bg-logoDark bg-cover bg-no-repeat bg-center w-16 h-16"></div>
-                <span class="text-white cursor-default">Echoo</span>
-            </div>
+                <span class="text-white text-3xl pt-1">Echoo</span>
+            </a>
         </div>
         <div class="flex gap-2">
         <?php
             if(autenticado()){
                 ?>
-                    <a href="visualizar_perfil.php?id=<?=$_SESSION["id_usuario"]?>" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-rose-900 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
-                    <div class="bg_user bg-cover bg-no-repeat bg-center w-10 h-10 rounded-full"></div>
+                    <a href="visualizar_perfil.php?id=<?=$_SESSION["id_usuario"]?>" class="flex items-center gap-2 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-rose-900 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
+                    <?php
+                    if(isset($_SESSION["url_imagem"])){
+                        if($_SESSION["url_imagem"] != null){
+                            $urlBgUserLoged = $_SESSION["url_imagem"];
+                            $styleBgUserLoged = "style=\"background-image: url('$urlBgUserLoged');\"";
+                            ?>
+                            <div <?=$styleBgUserLoged?> class=" bg-cover bg-no-repeat bg-center w-10 h-10 rounded-full"></div>
+                            <?php
+                        }
+                    }else{
+                        $styleBgUserLoged = "style=\"background-image: url('../images/defaultUser.jpg');\"";
+                        ?>
+                        <div <?=$styleBgUserLoged?> class="bg-cover bg-no-repeat bg-center w-10 h-10 rounded-full"></div>
+                        <?php
+                    }
+                    ?>   
                         <span><?=$_SESSION["username"]?></span>
                     </a>
                     <a href="sair.php" class="flex items-center gap-1 no-underline text-neutral-300 px-4 py-2 rounded-md drop-shadow-2xl cursor-pointer border-2 border-zinc-950 hover:border-rose-900 hover:bg-zinc-800 transition-all duration-200 ease-in box-border">
@@ -113,7 +152,7 @@ $editorjsFile = addCacheBuster('./editor.js');
         ?>
         </div>
     </header>
-    <nav class="flex flex-col gap-1 p-2 rounded-r-lg h-screen w-80 bg-zinc-900 z-20 absolute inset-0 -translate-x-80 transition-all duration-500 ease-in-out border-r-2 border-r-zinc-700 " id="nav_bar">
+    <nav class="flex flex-col gap-1 p-2 rounded-r-lg h-screen w-80 bg-zinc-900 z-50 absolute inset-0 -translate-x-80 transition-all duration-500 ease-in-out border-r-2 border-r-zinc-700 " id="nav_bar">
         <div class="flex justify-between mb-2 p-2">
             <div class="bg-logoDark bg-cover bg-no-repeat bg-center w-16 h-16"></div>
             <div class="flex items-center justify-center size-16">
@@ -160,17 +199,11 @@ $editorjsFile = addCacheBuster('./editor.js');
                 </svg>
                 <span>Pesquisar Usuários</span>
             </a>
-            <a href="" class="flex items-center gap-2 cursor-pointer no-underline text-neutral-300 rounded-md hover:bg-zinc-700 px-3 py-2 transition-all duration-200 ease-in">
+            <a href="chats.php" class="flex items-center gap-2 cursor-pointer no-underline text-neutral-300 rounded-md hover:bg-zinc-700 px-3 py-2 transition-all duration-200 ease-in">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-zinc-500">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
                 </svg>
                 <span>Chats</span>
-            </a>
-            <a href="" class="flex items-center gap-2 cursor-pointer no-underline text-neutral-300 rounded-md hover:bg-zinc-700 px-3 py-2 transition-all duration-200 ease-in">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-zinc-500">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                </svg>
-                <span>Criar</span>
             </a>
             
         </div>

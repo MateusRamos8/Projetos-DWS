@@ -1,8 +1,12 @@
 <?php
 session_start();
-?>
 
-id_usuario: <?=$_SESSION["id_usuario"]?><br>
-Username: <?=$_SESSION["username"]?><br>
-Email: <?=$_SESSION["email"]?><br>
-url_imagem: <?=$_SESSION["url_imagem"]?>
+
+// Verifica se há variáveis de sessão configuradas
+if (!empty($_SESSION)) {
+    echo "<pre>";
+    print_r($_SESSION); // Exibe todas as variáveis da sessão
+    echo "</pre>";
+} else {
+    echo "Não há variáveis de sessão configuradas.";
+}

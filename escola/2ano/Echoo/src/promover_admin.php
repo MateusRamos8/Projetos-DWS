@@ -4,9 +4,10 @@ require 'logica_autenticacao.php';
 require 'conexao.php';
 
 if(!administrador()){
-    redireciona('index.php');
     $_SESSION["result"] = false;
-    $_SESSION["msg_erro"] = "Você não possui permissão para acessar essa página";
+    $_SESSION["titulo"] = "Operação não permitida!";
+    $_SESSION["msg"] = "Você não tem permissão para acessar essa página.";
+    redireciona("index.php");
     die();
 }
 

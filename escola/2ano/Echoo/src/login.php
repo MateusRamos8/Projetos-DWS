@@ -2,6 +2,11 @@
 session_start();
 require "logica_autenticacao.php";
 
+if(autenticado()){
+    $_SESSION["result_false"] = false;
+    redireciona("form_login.php");
+    die();
+}
 
 require "conexao.php";
 
@@ -33,6 +38,10 @@ if(password_verify($senha, $row['senha'])){
     $_SESSION["administrador"] = $row['administrador'];
 
     $_SESSION["result_login"] = true;
+
+    $_SESSION["result"] = true;
+    $_SESSION["titulo"] = "Login realizado com sucesso!";
+    $_SESSION["msg"] = "Agora você está autenticado";
 }
 else{
     //NÃO DEU CERTO
@@ -42,8 +51,10 @@ else{
     unset($_SESSION["url_imagem"]);
     unset($_SESSION["administrador"]);
 
-    $_SESSION["result_login"] = false;
-    $_SESSION["erro"] = "Username ou senha incorretos. " . $error;
+
+    $_SESSION["result"] = false;
+    $_SESSION["titulo"] = "Erro no Login:";
+    $_SESSION["msg"] = "Username ou senha incorretos. " . $error;
 }
 
 redireciona("form_login.php");

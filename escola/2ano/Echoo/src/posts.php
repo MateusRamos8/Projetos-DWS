@@ -3,6 +3,14 @@ session_start();
 require 'logica_autenticacao.php';
 require 'conexao.php';
 
+if(!autenticado()){
+    $_SESSION["result"] = false;
+    $_SESSION["titulo"] = "Operação não permitida!";
+    $_SESSION["msg"] = "Você não tem permissão para acessar essa página.";
+    redireciona("index.php");
+    die();
+}
+
 // Consulta para obter os posts
 $sql = "SELECT p.id, p.titulo, p.url_imagem, p.data_criacao, u.username AS autor
         FROM posts p

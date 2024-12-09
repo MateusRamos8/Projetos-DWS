@@ -3,6 +3,14 @@
     require 'logica_autenticacao.php';
     
     if(autenticado()){
+        if(isset($_SESSION["result_login"]) && !$_SESSION["result_login"]){
+            $_SESSION["result"] = false;
+            $_SESSION["titulo"] = "Operação não permitida!";
+            $_SESSION["msg"] = "Você já está logado.";
+        }else{
+            unset($_SESSION["result_login"]);
+        }
+       
         redireciona();
         die();
     }
@@ -30,31 +38,7 @@
     </form>
 
 
-    <?php
 
-if(isset($_SESSION["result_login"])){
-
-    if($_SESSION["result_login"] == true){
-        ?>
-        <div class="w-96 p-5 text-green-900 font-bold bg-green-200 border-4 border-green-700 rounded-md">
-            <h4>Autenticado com Sucesso!!!</h4>
-        </div>
-        <?php
-    }else{
-        $erro = $_SESSION["erro"];
-        unset($_SESSION["erro"]);
-        ?> 
-        <div class="w-96 p-5 text-red-900 font-bold bg-red-200 border-4 border-red-700 rounded-md">
-            <h4>Falha ao efetuar autentificação.</h4>
-            <p><?=$erro?></p>
-        </div>
-        <?php
-        unset($_SESSION["erro"]);
-    }
-
-    unset($_SESSION["result_login"]);
-}
-?>
 
 </main>
 

@@ -27,7 +27,7 @@ nav_bar_btn.addEventListener("click", ()=>{
     //overlay.classList.remove('active');
     nav_barVisible = false;
   }
-})
+});
 overlay.addEventListener("click", ()=>{
   overlayActive(false);
   //overlay.classList.remove('active');
@@ -38,8 +38,12 @@ overlay.addEventListener("click", ()=>{
 nav_bar_close_btn.addEventListener("click", ()=>{
   overlayActive(false);
   //overlay.classList.remove('active');
-  nav_bar.classList.add('-translate-x-80');
-  nav_barVisible = false;
-})
+
+  if(nav_barVisible){
+    nav_bar.classList.add('-translate-x-80');
+    nav_barVisible = false;
+  }
+});
+
 
 

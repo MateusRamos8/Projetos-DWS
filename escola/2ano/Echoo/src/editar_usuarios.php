@@ -13,28 +13,31 @@ $adm = filter_input(INPUT_POST, "ad", FILTER_SANITIZE_NUMBER_INT);
 
 
 if(!autenticado()){
-    redireciona("index.php");
     $_SESSION["result"] = false;
-    $_SESSION["msg_erro"] = "Operação de edição não permitida.";
+    $_SESSION["titulo"] = "Operação de edição não permitida.";
+    $_SESSION["msg"] = "Você não tem permissão para acessar essa página.";
+    redireciona("index.php");
     die();
 }elseif($_SESSION["id_usuario"] != $id && !administrador()){
-    redireciona("index.php");
+    
     $_SESSION["result"] = false;
-    $_SESSION["msg_erro"] = "Operação não permitida.";
-    $_SESSION["erro"] = "Você está tentando editar um usuário que não é seu.";
+    $_SESSION["titulo"] = "Operação não permitida.";
+    $_SESSION["msg"] = "Você está tentando editar um usuário que não é seu.";
+    redireciona("index.php");
     die();
 }elseif(administrador() && $_SESSION["id_usuario"] != $id && $adm != 0 && !administradorMax()){
-    redireciona("gerenciar_usuarios.php");
+    
     $_SESSION["result"] = false;
-    $_SESSION["msg_erro"] = "Operação não permitida";
-    $_SESSION["erro"] = "Você está tentando editar um administrador que não é você.";
+    $_SESSION["titulo"] = "Operação não permitida";
+    $_SESSION["msg"] = "Você está tentando editar um administrador que não é você.";
+    redireciona("gerenciar_usuarios.php");
     die();
 }
 
 if(!isset($_POST["id"]) || !isset($_POST["username"]) || !isset($_POST["url_imagem"]) || !isset($_POST["email"]) || !isset($_POST["ad"])){
     $_SESSION["result"] = false;
-    $_SESSION["msg_erro"] = "Falha na edição.";
-    $_SESSION["erro"] = "Parâmetros não suficientes para realizar a edição.";
+    $_SESSION["titulo"] = "Falha na edição.";
+    $_SESSION["msg"] = "Parâmetros não suficientes para realizar a edição.";
     if(administrador()){
         redireciona("gerenciar_usuarios.php");
         die();
@@ -58,7 +61,8 @@ $count = $stmt->rowCount();
 
 if($result && $count >= 1){
     $_SESSION["result"] = $result;
-    $_SESSION["msg_sucesso"] = "Usuário $id editado com Sucesso.";
+    $_SESSION["titulo"] = "Sucesso";
+    $_SESSION["msg"] = "Usuário $id editado com Sucesso.";
     if($_SESSION["id_usuario"] == $id){
         $_SESSION["username"] = $username;
         $_SESSION["url_imagem"] = $url_imagem;
@@ -68,15 +72,17 @@ if($result && $count >= 1){
     }
 }elseif($result && $count == 0){
     $_SESSION["result"] = $result;
-    $_SESSION["msg_sucesso"] = "Não foi encontrado nenhum registro com os valores especificados.";
+    $_SESSION["result_nulo"] = true;
+    $_SESSION["titulo"] = "Not Found";
+    $_SESSION["msg"] = "Não foi encontrado nenhum registro com os valores especificados.";
     if($_SESSION["id_usuario"] == $id){
         redireciona("form_editar_usuarios.php");
         die();
     }
 }else{
     $_SESSION["result"] = $result;
-    $_SESSION["msg_erro"] = "Falha ao editar usuário $id.";
-    $_SESSION["erro"] = $error;
+    $_SESSION["titulo"] = "Falha ao editar usuário $id.";
+    $_SESSION["msg"] = $error;  
     redireciona("form_editar_usuarios.php");
     die();
 }

@@ -3,10 +3,15 @@ session_start();
 require "logica_autenticacao.php";
 require "conexao.php";
 
+
 if(!autenticado()){
+    $_SESSION["result"] = false;
+    $_SESSION["titulo"] = "Operação não permitida!";
+    $_SESSION["msg"] = "Você não tem permissão para acessar essa página.";
     redireciona("index.php");
     die();
 }
+$_SESSION['last_page'] = $_SERVER['REQUEST_URI'];
 
 require "header.php";
 if (isset($_GET["ordem"]) && !empty($_GET["ordem"])) {
@@ -92,7 +97,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
                         <?php
                             if($row['status_seguir'] == 'Seguindo'){
                                 ?>
-                                <a href="" class="flex items-center justify-center gap-1 bg-indigo-500 hover:bg-red-500 text-neutral-200 py-3 px-4 rounded-lg select-none group transition-all duration-300 ease-in-out">
+                                <a href="seguir.php?id=<?=$row['id']?>" class="flex items-center justify-center gap-1 bg-indigo-500 hover:bg-red-500 text-neutral-200 py-3 px-4 rounded-lg select-none group transition-all duration-300 ease-in-out">
                                     Seguindo
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round group-hover:hidden group-hover:opacity-0 transition-all duration-300 ease-in-out"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-x hidden opacity-0 group-hover:inline-block group-hover:opacity-100 transition-all duration-300 ease-in-out"><path d="M2 21a8 8 0 0 1 11.873-7"/><circle cx="10" cy="8" r="5"/><path d="m17 17 5 5"/><path d="m22 17-5 5"/></svg>
@@ -117,30 +122,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
         ?>
     </div>
 
-    <div class="p-8 flex justify-center items-center">
-        <?php
-        if(isset($_SESSION["result"])){
-            if($_SESSION["result"] == true){
-                ?>
-                <div class="w-96 p-5 text-green-900 font-bold bg-green-200 border-4 border-green-700 rounded-md">
-                    <h4><?=$_SESSION["msg_sucesso"]?></h4>
-                </div>
-                <?php
-                unset($_SESSION["msg_sucesso"]);
-            }else{
-                ?>
-                <div class="w-96 p-5 text-red-900 font-bold bg-red-200 border-4 border-red-700 rounded-md">
-                    <h4><?=$_SESSION["msg_erro"]?></h4>
-                    <p><?=$_SESSION["erro"]?></p>
-                </div>
-                <?php
-                unset($_SESSION["msg_erro"]);
-                unset($_SESSION["erro"]);
-            }
-            unset($_SESSION["result"]);
-        }
-        ?>
-    </div>
+    
 </main>
 
 
