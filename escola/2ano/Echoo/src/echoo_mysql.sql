@@ -48,6 +48,8 @@ END$$
 
 DELIMITER ;
 
+--Ta dando ruim
+
 DELIMITER $$
 
 CREATE TRIGGER after_post_delete

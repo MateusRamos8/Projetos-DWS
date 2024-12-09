@@ -230,21 +230,15 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
 
 
                         <td class="p-3 text-sm text-gray-700"><?= $row["p_titulo"] ?></td>
-                        <td class="p-3 text-sm text-gray-700"><?= $row["p_data_criacao"] ?></td>
+                        <td class="p-3 text-sm text-gray-700"><?= formatDateTime($row["p_data_criacao"]) ?></td>
 
                         <td class="p-3 text-sm text-gray-700">
                             <div class="flex justify-around items-center">
-                                <a href="#" class="flex items-center justify-center gap-1 bg-amber-400 text-neutral-800 py-3 px-4 rounded-lg select-none">
-                                Editar
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-                                </svg>
-                                </a>
                                 
                                 <?php
                                 if(administradorMax() || $row["u_id"] == $_SESSION["id_usuario"] || $row["u_administrador"] == 0){
                                     ?>
-                                    <a href="#" class="flex items-center justify-center gap-1 bg-red-500 text-neutral-200 py-3 px-4 rounded-lg select-none" onclick="if(!confirm('Tem certeza que deseja excluir?')){ return false;}">
+                                    <a href="excluir_posts.php?idPost=<?=$row["p_id"]?>&idUserPost=<?=$row["u_id"]?>&adm=<?=$row["u_administrador"]?>" class="flex items-center justify-center gap-1 bg-red-500 text-neutral-200 py-3 px-4 rounded-lg select-none" onclick="if(!confirm('Tem certeza que deseja excluir?')){ return false;}">
                                         Excluir
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2 size-5"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
                                         

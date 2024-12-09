@@ -3,13 +3,6 @@ require '../vendor/autoload.php';
 require 'conexao.php';
 require 'logica_autenticacao.php';
 
-if(!autenticado()){
-    $_SESSION["result"] = false;
-    $_SESSION["titulo"] = "Operação não permitida!";
-    $_SESSION["msg"] = "Você não tem permissão para acessar essa página.";
-    redireciona("index.php");
-    die();
-}
 
 
 header('Content-Type: application/json');
@@ -28,7 +21,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
 try {
-    $sql = "SELECT p.titulo, p.url_imagem, p.conteudo, p.data_criacao, u.username 
+    $sql = "SELECT p.titulo, p.url_imagem AS post_url_imagem, p.conteudo, p.data_criacao, u.username, u.url_imagem AS user_url_imagem
             FROM posts p 
             JOIN usuarios u ON p.id_usuario = u.id 
             WHERE p.id = ?";

@@ -42,6 +42,8 @@ const viewPostModal = document.getElementById('viewPostModal');
 const btnCloseViewModal = document.getElementById('btnCloseViewModal');
 const postModalTitle = document.getElementById('postModalTitle');
 const postModalImage = document.getElementById('postModalImage');
+const postModalUserImage = document.getElementById('postModalUserImage');
+const postModalData = document.getElementById('postModalData');
 const postModalContent = document.getElementById('postModalContent');
 const postModalAuthor = document.getElementById('postModalAuthor');
 
@@ -160,6 +162,52 @@ document.getElementById('saveBtn').addEventListener('click', () => {
     });
 });
 
+function formatDate(timestamp) {
+    if(timestamp == null){
+        return '';
+    }
+
+    const date = new Date(timestamp); // Converte o timestamp para um objeto Date
+    const now = new Date(); // Data atual
+
+    const isToday = date.toDateString() === now.toDateString(); // Verifica se é hoje
+    const isSameYear = date.getFullYear() === now.getFullYear(); // Verifica se é o mesmo ano
+
+    if (isToday) {
+        // Formato: horas:minutos (24h)
+        return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+    } else if (isSameYear) {
+        // Formato: dia/mês
+        return `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}`;
+    } else {
+        // Formato: dia/mês/ano
+        return `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
+    }
+}
+
+function formatDateDateTime(datetime) {
+    // Converte a string DATETIME em um objeto Date
+    const date = new Date(datetime);
+
+    // Formata o dia com dois dígitos
+    const day = date.getDate().toString().padStart(2, '0');
+
+    // Formata o mês com dois dígitos (lembrando que os meses começam do 0)
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+
+    // Obtém o ano
+    const year = date.getFullYear();
+
+    // Obtém a hora no formato de 24 horas com dois dígitos
+    const hours = date.getHours().toString().padStart(2, '0');
+
+    // Obtém os minutos com dois dígitos
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+
+    // Combina tudo no formato desejado
+    return `${day}/${month}/${year} - ${hours}:${minutes}`;
+}
+
 document.querySelectorAll('.post_item').forEach(post => {
     post.addEventListener('click', () => {
         const postId = post.dataset.id;
@@ -174,13 +222,15 @@ document.querySelectorAll('.post_item').forEach(post => {
             })
             .then(data => {
                 if (data.success) {
-                    const { titulo, url_imagem, username, data_criacao, conteudo } = data.data;
+                    const { titulo, user_url_imagem, username, data_criacao, conteudo, post_url_imagem } = data.data;
 
                     // Preenche os elementos do modal
                     postModalTitle.textContent = titulo;
-                    postModalImage.src = url_imagem;
-                    postModalAuthor.textContent = `Autor: ${username} | Data: ${data_criacao}`;
+                    postModalImage.src = post_url_imagem;
+                    postModalAuthor.textContent = `${username}`;
                     postModalContent.innerHTML = conteudo;
+                    postModalUserImage.style.backgroundImage = `url('${user_url_imagem || "../images/defaultUser.jpg"}')`;
+                    postModalData.innerText = formatDateDateTime(data_criacao);
 
                     // Exibe o modal
                     viewPostModal.classList.remove('hidden');

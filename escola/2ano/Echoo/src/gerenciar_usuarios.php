@@ -211,7 +211,7 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
 
 
                         <td class=" p-3 text-sm text-gray-700"><?= $row["email"] ?></td>
-                        <td class=" p-3 text-sm text-gray-700"><?= $row["data_criacao"] ?></td>
+                        <td class=" p-3 text-sm text-gray-700"><?= formatDateNormal($row["data_criacao"]) ?></td>
                         <td class=" p-3 text-sm text-gray-700 ">
                             <div class="flex justify-center">
                                 <?php

@@ -12,7 +12,7 @@ if(!autenticado()){
 }
 
 // Consulta para obter os posts
-$sql = "SELECT p.id, p.titulo, p.url_imagem, p.data_criacao, u.username AS autor
+$sql = "SELECT p.id, p.titulo, p.url_imagem, p.data_criacao, u.username AS autor, u.url_imagem AS user_url_imagem
         FROM posts p
         JOIN usuarios u ON p.id_usuario = u.id
         ORDER BY p.data_criacao DESC";
@@ -44,12 +44,21 @@ require 'header.php';
                 $urlPost = $post['url_imagem'];
                 $styleBg = "style=\"background-image: url('" . $urlPost . "');\"";
                 ?>
-                <div class="post_item border-2 border-white m-4 rounded-xl text-white cursor-pointer" data-id="<?= htmlspecialchars($post['id']) ?>">
-                    <div <?=$styleBg?> class="h-40 bg-cover bg-center rounded-t-xl border-b-4 border-b-neutral-300"></div>
-                    <div class="p-4">
-                        <h2 class="text-xl font-bold text-center"><?= htmlspecialchars($post['titulo']) ?></h2>    
-                        <p>Autor: <?= htmlspecialchars($post['autor']) ?></p>
-                        <p>Data: <?= htmlspecialchars($post['data_criacao']) ?></p>
+                <div class="post_item border-2 bg-white text-neutral-900 border-white m-4 rounded-xl cursor-pointer w-1/4 h-[45vh]" data-id="<?= htmlspecialchars($post['id']) ?>">
+                    <div <?=$styleBg?> class="h-[62%]  bg-cover bg-center bg-no-repeat rounded-t-xl border-b-4 border-b-neutral-300"></div>
+                    <div class="flex flex-col gap-6  p-4">
+                        <h2 class="text-4xl font-bold text-center"><?= htmlspecialchars($post['titulo']) ?></h2>    
+                        <div class="flex items-center gap-2">
+                            <?php
+                                $urlPostUser = $post["user_url_imagem"];
+                                $styleBgPostUser = "style=\"background-image: url('$urlPostUser');\"";
+                            ?>
+                            <div <?=$styleBgPostUser?> class="bg-cover bg-no-repeat bg-center size-14 rounded-full"></div>
+                            <div class="flex flex-col">
+                                <h4 class="text-xl font-bold"><?= htmlspecialchars($post['autor']) ?></h4>
+                                <p class="text-neutral-600"><?= htmlspecialchars(formatDateTime($post['data_criacao'])) ?></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <?php }
@@ -62,13 +71,20 @@ require 'header.php';
     <!-- Modal dinâmico para exibir detalhes do post -->
     <div id="viewPostModal" class="hidden fixed inset-0 w-[100%] h-[100%] bg-[rgba(0,0,0,0.5)] justify-center items-center break-words">
         <div class="bg-white p-5 rounded-md w-[90%] max-w-[800px] max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center mb-4">
-                <h2 id="postModalTitle" class="text-xl font-bold"></h2>
+            <div class="flex justify-end items-center mb-4">
                 <span class="hover:text-red-600 cursor-pointer" id="btnCloseViewModal">&times;</span>
             </div>
             <img id="postModalImage" class="w-full rounded-md mb-4" src="" alt="">
-            <p id="postModalAuthor" class="text-gray-600 text-sm"></p>
-            <div id="postModalContent" class="text-black mb-4 prose prose-modal max-w-[740px] w-[740px]"></div>
+            <h2 id="postModalTitle" class="text-6xl font-bold py-2"></h2>
+
+            <div class="flex items-center gap-2">
+                        <div id="postModalUserImage" class="bg-cover bg-no-repeat bg-center size-14 rounded-full"></div>
+                        <div class="flex flex-col">
+                            <h4 id="postModalAuthor" class="text-xl font-bold"><?= htmlspecialchars($post['autor']) ?></h4>
+                            <p id="postModalData" class="text-neutral-600 text-sm"><?= htmlspecialchars(formatDateTime($post['data_criacao'])) ?></p>
+                        </div>
+                    </div>
+            <div id="postModalContent" class="text-black mb-4 prose prose-modal max-w-[740px] w-[740px] border-t-2 border-neutral-500 mt-4 py-2"></div>
         </div>
     </div>
 

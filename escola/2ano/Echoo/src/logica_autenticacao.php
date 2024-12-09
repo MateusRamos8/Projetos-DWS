@@ -23,6 +23,21 @@ function administradorMax(){
     }
 }
 
+function formatDateTime($datetime) {
+    // Converte o datetime em timestamp
+    $timestamp = strtotime($datetime);
+    // Retorna a data formatada
+    return date('d/m/Y - H:i', $timestamp);
+}
+
+function formatDateNormal($date) {
+    // Converte a data para um objeto DateTime
+    $dateTime = new DateTime($date);
+
+    // Formata a data no formato desejado
+    return $dateTime->format('d/m/Y');
+}
+
 function nome_usuario(){
     return $_SESSION["nome"];
 }
