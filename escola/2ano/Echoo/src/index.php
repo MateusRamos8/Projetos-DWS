@@ -2,6 +2,11 @@
     session_start();
     require 'logica_autenticacao.php';
     require 'header.php';
+    if(autenticado()){
+        $urlGetStarted = "posts.php";
+    }else{
+        $urlGetStarted = "form_login.php";
+    }
 ?>
 
 <main class="flex flex-col justify-center">
@@ -15,7 +20,7 @@
             <p class="text-stone-100 text-base">
                 Aqui você poderá realizar e visualizar postagens, além de conversar com outros usuários!.
             </p>
-            <button class="mt-8 text-white uppercase py-4 text-base font-light px-10 border border-white hover:bg-white hover:bg-opacity-10">Comece Agora</button>
+            <a href="<?=$urlGetStarted?>" class="inline-block mt-8 text-white uppercase py-4 text-base font-light px-10 border border-white hover:bg-white hover:bg-opacity-10">Comece Agora</a>
             </div>
         </div>
         </div>
@@ -25,7 +30,7 @@
             <h2 class="font-black text-neutral-900 text-3xl mb-4">Ainda é só o começo!</h2>
             <p class="text-base text-neutral-900 font-bold">Essa aplicação foi criada recentemente, e ainda precisa de muitas atualizações! Mas já temos várias funcionalidades disponíveis, aproveite!</p>
             </div>
-            <button class="text-neutral-900 uppercase py-3 text-base px-10 border border-neutral-900 hover:bg-neutral-900 hover:bg-opacity-10">Comece Agora</button>
+            <a href="<?=$urlGetStarted?>" class="inline-block text-neutral-900 uppercase py-3 text-base px-10 border border-neutral-900 hover:bg-neutral-900 hover:bg-opacity-10">Comece Agora</a>
         </div>
         </div>
         <div class="py-12 relative overflow-hidden bg-white">
@@ -85,28 +90,7 @@
         </div>
         </div>
     </div>
-    <?php
-    
-    if(isset($_SESSION["result"]) && !$_SESSION["result"]){
-
-        ?>
-        <div class="w-96 p-5 text-red-900 font-bold bg-red-200 border-4 border-red-700 rounded-md">
-            <h4><?=$_SESSION["msg_erro"]?></h4>
-            <?php
-                if(isset($_SESSION["erro"])){
-                    ?>
-                    <p><?=$_SESSION["erro"]?></p>
-                    <?php
-                }
-            ?>
-        </div>
-        <?php
-
-        unset($_SESSION["msg_erro"]);
-        unset($_SESSION["erro"]);
-        unset($_SESSION["result"]);
-    }
-    ?>
+   
 </main>
 
 <?php

@@ -4,6 +4,9 @@ require "conexao.php";
 require "logica_autenticacao.php";
 
 if(!autenticado()){
+    $_SESSION["result"] = false;
+    $_SESSION["titulo"] = "Operação não permitida!";
+    $_SESSION["msg"] = "Você não tem permissão para acessar essa página.";
     redireciona("index.php");
     die();
 }
