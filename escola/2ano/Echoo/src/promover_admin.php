@@ -25,11 +25,12 @@ try {
 
 if($result){
     $_SESSION["result"] = $result;
-    $_SESSION["msg_sucesso"] = "Usuário $id promovido com Sucesso.";
+    $_SESSION["titulo"] = "Sucesso";
+    $_SESSION["msg"] = "Usuário $id promovido com Sucesso.";
 }else{
     $_SESSION["result"] = $result;
-    $_SESSION["msg_erro"] = "Falha ao promover usuário $id.";
-    $_SESSION["erro"] = $error;
+    $_SESSION["titulo"] = "Falha ao promover usuário $id.";
+    $_SESSION["msg"] = $error;
 }
 
 redireciona("gerenciar_usuarios.php");

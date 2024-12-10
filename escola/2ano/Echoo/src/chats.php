@@ -350,8 +350,8 @@ require "header.php";
                 <button id="openDadosChat" class="flex gap-2 items-center w-[100%]">
                     <div id="chatIconImage" class="bg-cover bg-center bg-no-repeat size-16 rounded-full block mr-2"></div>
                     <div class="flex flex-col text-left">
-                        <h1 id="chatTitle" class="text-2xl font-semibold select-none">Alice</h1>
-                        <p class="text-sm text-neutral-400 select-none">Clique para ver dados da conversa</p>
+                        <h1 id="chatTitle" class="text-2xl font-semibold select-none"> </h1>
+                        <p class="text-sm text-neutral-400 select-none"> </p>
                     </div>
                 </button>
                 <div class="flex items-center gap-5">
@@ -374,183 +374,9 @@ require "header.php";
             <!-- Chat Messages -->
             <div id="messagesContainer" class="h-screen overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-neutral-800 [&::-webkit-scrollbar-thumb]:bg-rose-900 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full p-4 pb-64">
                 <!-- Incoming Message -->
-                <div class="flex mb-4 cursor-pointer">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
-                        <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                    <div class="flex max-w-96 bg-neutral-200 rounded-lg p-3 gap-3 rounded-ss-none">
-                        <p class="text-gray-700">Hey Bob, how's it going?</p>
-                    </div>
-                    
-                </div>
-                <div class="flex justify-start mb-4 cursor-pointer pl-11">
-                    <div class="flex max-w-96 bg-neutral-200 text-white rounded-lg rounded-ss-none p-3 gap-3">
-                        <p class="text-gray-700">Hi Alice! I'm good, just finished a great book. How about you?</p>
-                    </div>
-                </div>
+                
 
-                <!-- Outgoing Message -->
-                <div class="flex justify-end mb-4 cursor-pointer">
-                    
-                    <div class="flex max-w-96 bg-rose-500 text-white rounded-lg rounded-se-none p-3 gap-3">
-                        <p>Hi Alice! I'm good, just finished a great book. How about you?</p>
-                    </div>
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center ml-2">
-                        <img src="https://placehold.co/200x/b7a8ff/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="My Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                </div>
-
-                <div class="flex justify-end mb-4 cursor-pointer pr-11">
-                    <div class="flex max-w-96 bg-rose-500 text-white rounded-lg rounded-se-none p-3 gap-3">
-                        <p>Hi Alice! I'm good, just finished a great book. How about you?</p>
-                    </div>
-                </div>
-
-                <!-- Incoming Message -->
-                <div class="flex mb-4 cursor-pointer">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
-                        <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                    <div class="flex max-w-96 bg-neutral-200 rounded-lg p-3 gap-3">
-                        <p class="text-gray-700">That book sounds interesting! What's it about?</p>
-                    </div>
-                </div>
-
-                <!-- Outgoing Message -->
-                <div class="flex justify-end mb-4 cursor-pointer">
-                    <div class="flex max-w-96 bg-rose-500 text-white rounded-lg p-3 gap-3">
-                        <p>It's about an astronaut stranded on Mars, trying to survive. Gripping stuff!</p>
-                    </div>
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center ml-2">
-                        <img src="https://placehold.co/200x/b7a8ff/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="My Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                </div>
-
-                <!-- Incoming Message -->
-                <div class="flex mb-4 cursor-pointer">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
-                        <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                    <div class="flex max-w-96 bg-neutral-200 rounded-lg p-3 gap-3">
-                        <p class="text-gray-700">I'm intrigued! Maybe I'll borrow it from you when you're done?</p>
-                    </div>
-                </div>
-
-                <!-- Outgoing Message -->
-                <div class="flex justify-end mb-4 cursor-pointer">
-                    <div class="flex max-w-96 bg-rose-500 text-white rounded-lg p-3 gap-3">
-                        <p>Of course! I'll drop it off at your place tomorrow.</p>
-                    </div>
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center ml-2">
-                        <img src="https://placehold.co/200x/b7a8ff/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="My Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                </div>
-
-                <!-- Incoming Message -->
-                <div class="flex mb-4 cursor-pointer">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
-                        <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                    <div class="flex max-w-96 bg-neutral-200 rounded-lg p-3 gap-3">
-                        <p class="text-gray-700">Thanks, you're the best!</p>
-                    </div>
-                </div>
-
-                <!-- Outgoing Message -->
-                <div class="flex justify-end mb-4 cursor-pointer">
-                    <div class="flex max-w-96 bg-rose-500 text-white rounded-lg p-3 gap-3">
-                        <p>Anytime! Let me know how you like it. 😊</p>
-                    </div>
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center ml-2">
-                        <img src="https://placehold.co/200x/b7a8ff/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="My Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                </div>
-
-                <!-- Incoming Message -->
-                <div class="flex mb-4 cursor-pointer">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
-                        <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                    <div class="flex max-w-96 bg-neutral-200 rounded-lg p-3 gap-3">
-                        <p class="text-gray-700">So, pizza next week, right?</p>
-                    </div>
-                </div>
-
-                <!-- Outgoing Message -->
-                <div class="flex justify-end mb-4 cursor-pointer">
-                    <div class="flex max-w-96 bg-rose-500 text-white rounded-lg p-3 gap-3">
-                        <p>Absolutely! Can't wait for our pizza date. 🍕</p>
-                    </div>
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center ml-2">
-                        <img src="https://placehold.co/200x/b7a8ff/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="My Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                </div>
-                <!-- Incoming Message -->
-                <div class="flex mb-4 cursor-pointer">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
-                        <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                    <div class="flex max-w-96 bg-neutral-200 rounded-lg p-3 gap-3">
-                        <p class="text-gray-700">Hoorayy!!</p>
-                    </div>
-                </div>
-
-                <!-- Outgoing Message -->
-                <div class="flex justify-end mb-4 cursor-pointer">
-                    <div class="flex max-w-96 bg-rose-500 text-white rounded-lg p-3 gap-3">
-                        <p>Absolutely! Can't wait for our pizza date. 🍕</p>
-                    </div>
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center ml-2">
-                        <img src="https://placehold.co/200x/b7a8ff/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="My Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                </div>
-                <!-- Incoming Message -->
-                <div class="flex mb-4 cursor-pointer">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
-                        <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                    <div class="flex max-w-96 bg-neutral-200 rounded-lg p-3 gap-3">
-                        <p class="text-gray-700">Hoorayy!!</p>
-                    </div>
-                </div>
-
-                <!-- Outgoing Message -->
-                <div class="flex justify-end mb-4 cursor-pointer">
-                    <div class="flex max-w-96 bg-rose-500 text-white rounded-lg p-3 gap-3">
-                        <p>Absolutely! Can't wait for our pizza date. 🍕</p>
-                    </div>
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center ml-2">
-                        <img src="https://placehold.co/200x/b7a8ff/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="My Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                </div>
-                <!-- Incoming Message -->
-                <div class="flex mb-4 cursor-pointer">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
-                        <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                    <div class="flex max-w-96 bg-neutral-200 rounded-lg p-3 gap-3">
-                        <p class="text-gray-700">Hoorayy!!</p>
-                    </div>
-                </div>
-
-                <!-- Outgoing Message -->
-                <div class="flex justify-end mb-4 cursor-pointer">
-                    <div class="flex max-w-96 bg-rose-500 text-white rounded-lg p-3 gap-3">
-                        <p>Absolutely! Can't wait for our pizza date. 🍕</p>
-                    </div>
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center ml-2">
-                        <img src="https://placehold.co/200x/b7a8ff/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="My Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                </div>
-                <!-- Incoming Message -->
-                <div class="flex mb-4 cursor-pointer">
-                    <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
-                        <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar" class="w-8 h-8 rounded-full">
-                    </div>
-                    <div class="flex max-w-96 bg-neutral-200 rounded-lg p-3 gap-3">
-                        <p class="text-gray-700">Hoorayy!!</p>
-                    </div>
-                </div>
+                
             </div>
 
             <!-- Chat Input
@@ -911,7 +737,7 @@ require "header.php";
         }
 
         // Atualiza os chats a cada 3 segundos
-        setInterval(updateChats, 50);
+        setInterval(updateChats, 100);
 
 
 
@@ -938,7 +764,7 @@ require "header.php";
             intervalId = setInterval(() => {
                 // Sua lógica para atualizar o container de mensagens
                 carregarMensagens(idChat, containerMensagens);
-            }, 50);
+            }, 100);
         }
 
         
@@ -969,7 +795,7 @@ require "header.php";
                 console.error('Container de mensagens não encontrado!');
                 return;
             }
-            container.innerHTML = ''; // Limpa o container de mensagens
+            container.innerHTML = ' '; // Limpa o container de mensagens
 
             const idUsuarioLogado = <?=$_SESSION["id_usuario"]?>; // ID do usuário logado
             

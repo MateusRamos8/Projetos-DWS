@@ -1,19 +1,18 @@
-CREATE TABLE Usuarios (
+CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(200) UNIQUE NOT NULL,
     email VARCHAR(200) UNIQUE NOT NULL,
     senha VARCHAR(100) NOT NULL,
     url_imagem VARCHAR(300),
- 
     nome VARCHAR(200) NOT NULL DEFAULT '0',
     bio VARCHAR(200) NOT NULL DEFAULT 'Usuário do Echoo',
     qtd_posts INTEGER NOT NULL DEFAULT 0,
     seguidores INTEGER NOT NULL DEFAULT 0,
     seguindo INTEGER NOT NULL DEFAULT 0,
-    
-    data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
+    data_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     administrador INT NOT NULL DEFAULT 0
 ) ENGINE=InnoDB;
+
 
 CREATE TABLE seguidores(
     id_seguidor INT NOT NULL,
@@ -23,14 +22,14 @@ CREATE TABLE seguidores(
     FOREIGN KEY (id_seguido) REFERENCES usuarios(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
-CREATE TABLE Posts (
+CREATE TABLE posts (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(50) UNIQUE NOT NULL,
     conteudo TEXT NOT NULL,
     url_imagem VARCHAR(300) DEFAULT 'default-avatar.png',
     data_criacao DATETIME NOT NULL,
     id_usuario INT,
-    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
         ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
@@ -50,18 +49,18 @@ DELIMITER ;
 
 --Ta dando ruim
 
-DELIMITER $$
+-- DELIMITER $$
 
-CREATE TRIGGER after_post_delete
-AFTER DELETE ON posts
-FOR EACH ROW
-BEGIN
-    UPDATE usuarios
-    SET qtd_posts = qtd_posts - 1
-    WHERE id = OLD.id_usuario;
-END$$
+-- CREATE TRIGGER after_post_delete
+-- AFTER DELETE ON posts
+-- FOR EACH ROW
+-- BEGIN
+--     UPDATE usuarios
+--     SET qtd_posts = qtd_posts - 1
+--     WHERE id = OLD.id_usuario;
+-- END$$
 
-DELIMITER ;
+-- DELIMITER ;
 
 CREATE TABLE chats (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -72,10 +71,13 @@ CREATE TABLE chats (
     is_group BOOLEAN NOT NULL,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+--id_usuario_criador INT,
+    --FOREIGN KEY (id_usuario_criador) REFERENCES usuarios(id)
 
 CREATE TABLE chat_users (
     id_chat INT NOT NULL,
     id_usuario INT NOT NULL,
+    gerenciador INT NOT NULL DEFAULT 0,
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_chat, id_usuario),
     FOREIGN KEY (id_chat) REFERENCES chats(id),

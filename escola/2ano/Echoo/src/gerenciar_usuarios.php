@@ -4,7 +4,7 @@ require 'logica_autenticacao.php';
 require 'conexao.php';
 
 if (!administrador()) {
-    
+
     
     $_SESSION["result"] = false;
     $_SESSION["titulo"] = "Operação não permitida!";
@@ -18,6 +18,7 @@ require 'header.php';
 if (isset($_GET["ordem"]) && !empty($_GET["ordem"])) {
     $ordem = filter_input(INPUT_GET, "ordem", FILTER_SANITIZE_SPECIAL_CHARS);
 } else {
+    
     $ordem = "username";
 }
 
@@ -61,7 +62,8 @@ if (isset($_POST["busca"]) && !empty($_POST["busca"])) {
         $result = $stmt->execute([$busca, $busca, $buscaInt]);
     }
 } else {
-    $sql = "SELECT id, username, email, url_imagem, data_criacao, administrador FROM Usuarios ORDER BY $ordem";
+    
+    $sql = "SELECT id, username, email, url_imagem, data_criacao, administrador FROM usuarios ORDER BY $ordem";
     $stmt = $conn->query($sql);
 }
 

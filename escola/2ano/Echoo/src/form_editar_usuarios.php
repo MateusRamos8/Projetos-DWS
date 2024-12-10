@@ -93,30 +93,7 @@ require "header.php";
         </div>
     </form>
 
-    <div class="p-8 flex justify-center items-center">
-        <?php
-        if(isset($_SESSION["result"])){
-            if($_SESSION["result"] == true){
-                ?>
-                <div class="w-96 p-5 text-green-900 font-bold bg-green-200 border-4 border-green-700 rounded-md">
-                    <h4><?=$_SESSION["msg_sucesso"]?></h4>
-                </div>
-                <?php
-                unset($_SESSION["msg_sucesso"]);
-            }else{
-                ?>
-                <div class="w-96 p-5 text-red-900 font-bold bg-red-200 border-4 border-red-700 rounded-md">
-                    <h4><?=$_SESSION["titulo"]?></h4>
-                    <p><?=$_SESSION["msg"]?></p>
-                </div>
-                <?php
-                unset($_SESSION["titulo"]);
-                unset($_SESSION["msg"]);
-            }
-            unset($_SESSION["result"]);
-        }
-        ?>
-    </div>
+    
 </main>
 
 <?php

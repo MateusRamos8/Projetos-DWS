@@ -12,11 +12,8 @@ require "logica_autenticacao.php";
    $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
    $senha = filter_input(INPUT_POST, "senha");
-   $url_imagem = filter_input(INPUT_POST,"url_imagem", FILTER_VALIDATE_URL)
-// INSERT INTO `usuarios`(`id`, `nome`, `email`, `senha`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
-   ?>
-  
-   <?php
+   $url_imagem = filter_input(INPUT_POST,"url_imagem", FILTER_VALIDATE_URL);
+
 
    $senha_hash = password_hash($senha, PASSWORD_BCRYPT);
    $sql = "INSERT INTO usuarios(username, email, senha, url_imagem) VALUES (?, ?, ?, ?)";
@@ -50,5 +47,5 @@ require "logica_autenticacao.php";
   }
   
   redireciona("form_cadastrar.php");
-   
+  die();
 ?>
