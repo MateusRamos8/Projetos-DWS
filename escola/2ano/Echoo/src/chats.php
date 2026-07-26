@@ -765,6 +765,7 @@ require "header.php";
                 // Sua lógica para atualizar o container de mensagens
                 carregarMensagens(idChat, containerMensagens);
             }, 100);
+            
         }
 
         
@@ -888,9 +889,10 @@ require "header.php";
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.success) {
+                        //const containerMensagens = document.getElementById('messagesContainer');
                         console.log('Mensagem enviada com sucesso!');
                         inputMensagem.value = ''; // Limpa o input após o envio
-                        carregarMensagens(idChat); // Atualiza as mensagens no chat
+                        //carregarMensagens(idChat, containerMensagens); // Atualiza as mensagens no chat
                     } else {
                         alert('Erro ao enviar mensagem: ' + data.error);
                     }
