@@ -215,15 +215,18 @@ document.querySelectorAll('.post_item').forEach(post => {
         // Requisição para buscar os detalhes do post
         fetch(`get_post.php?id=${postId}`)
             .then(response => {
+                console.log(response);
                 if (!response.ok) {
                     throw new Error('Erro ao buscar o post');
                 }
                 return response.json(); // Obtemos o JSON da resposta
             })
             .then(data => {
+                //console.log("da");
+                console.log(data);
                 if (data.success) {
                     const { titulo, user_url_imagem, username, data_criacao, conteudo, post_url_imagem } = data.data;
-
+                    console.log(data.data);
                     // Preenche os elementos do modal
                     postModalTitle.textContent = titulo;
                     postModalImage.src = post_url_imagem;
