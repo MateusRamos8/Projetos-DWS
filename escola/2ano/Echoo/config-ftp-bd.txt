@@ -1,0 +1,14 @@
+---FTP
+
+Login:	MateusRamos@mateusramos2024.whf.bz
+Password:	Ma311007*
+Path:	home/mateusra/domains/mateusramos2024.whf.bz
+
+endereçoo ftp: ftp.mateusramos2024.whf.bz
+
+---Banco
+
+Hostname: localhost
+Database: mateusra_dws2_MateusRamos
+Username: mateusra_dws2_MateusRamos
+Password: Epzd3FzuePHSJXBHbY2t

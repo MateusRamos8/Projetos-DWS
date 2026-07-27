@@ -1,0 +1,270 @@
+ // Configuração do Editor.js
+ const editor = new EditorJS({
+    holder: 'editorjs',
+
+    tools: { 
+        header: {
+          class: Header, 
+          inlineToolbar: ['link'],
+          defaultLever: 1,
+        }, 
+   
+       image: SimpleImage,
+       embed: {
+        class: Embed,
+        config: {
+          services: {
+            youtube: true,
+            coub: true
+          }
+        }
+      },
+      quote: {
+        class: Quote,
+        inlineToolbar: true,
+        shortcut: 'CMD+SHIFT+O',
+        config: {
+          quotePlaceholder: 'Enter a quote',
+          captionPlaceholder: 'Quote\'s author',
+        },
+      },
+
+       
+      
+}});
+
+// Modal handlers
+const modal = document.getElementById('modal');
+const btnOpenModal = document.getElementById('btnOpenModal');
+const btnCloseModal = document.getElementById('btnCloseModal');
+// Modal de visualização do post
+const viewPostModal = document.getElementById('viewPostModal');
+const btnCloseViewModal = document.getElementById('btnCloseViewModal');
+const postModalTitle = document.getElementById('postModalTitle');
+const postModalImage = document.getElementById('postModalImage');
+const postModalUserImage = document.getElementById('postModalUserImage');
+const postModalData = document.getElementById('postModalData');
+const postModalContent = document.getElementById('postModalContent');
+const postModalAuthor = document.getElementById('postModalAuthor');
+
+function renderListItems(items, style) {
+    const baseClass = `cdx-list cdx-list-${style}`;
+    const childrenClass = `${baseClass}__item-children`;
+
+    return items
+        .map(item => {
+            const hasChildren = Array.isArray(item.items) && item.items.length > 0;
+            const checkedClass = style === 'checklist' && item.meta?.checked ? 'cdx-list__checkbox--checked' : '';
+
+            return `
+                <li class="cdx-list__item">
+                    ${style === 'checklist' ? `
+                        <div class="cdx-list__checkbox ${checkedClass}">
+                            <span class="cdx-list__checkbox-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7 12L10.4884 15.8372C10.5677 15.9245 10.705 15.9245 10.7844 15.8372L17 9"></path>
+                                </svg>
+                            </span>
+                        </div>` : ''
+                    }
+                    <div class="cdx-list__item-content" contenteditable="true" data-empty="false">${item.content}</div>
+                    ${hasChildren ? `<ul class="${childrenClass}">${renderListItems(item.items, style)}</ul>` : ''}
+                </li>
+            `;
+        })
+        .join('');
+}
+
+// Função para renderizar a lista principal
+function renderList(block) {
+    const { style, items } = block.data;
+
+    if (!Array.isArray(items)) return '';
+
+    const baseClass = `cdx-list cdx-list-${style}`;
+    const renderedItems = renderListItems(items, style);
+
+    return style === 'ordered'
+        ? `<ol class="${baseClass}">${renderedItems}</ol>` // Lista ordenada
+        : `<ul class="${baseClass}">${renderedItems}</ul>`; // Lista não ordenada ou checklist
+}
+
+btnOpenModal.addEventListener('click', () => {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+});
+
+btnCloseModal.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+});
+
+
+
+// Salvar post
+document.getElementById('saveBtn').addEventListener('click', () => {
+    const titulo = document.getElementById('titulo').value.trim(); // Remove espaços extras
+    const urlImagem = document.getElementById('urlImagem').value.trim(); // Remove espaços extras
+
+    // Verifica se os campos obrigatórios foram preenchidos
+    if (!titulo || !urlImagem) {
+        alert('Por favor, preencha todos os campos obrigatórios!');
+        return;
+    }
+
+    // Salva o conteúdo do editor
+    editor.save().then((outputData) => {
+
+        const postData = {
+            titulo: titulo,
+            url_imagem: urlImagem,
+            blocks: outputData, // Conteúdo do editor
+        };
+
+        console.log(postData);
+
+        // Realiza a requisição para o servidor
+        
+        fetch('inserir_post.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData), // Converte os dados para JSON
+        })
+            .then(response => {
+                console.log('Resposta do servidor:', response); // Loga a resposta bruta
+                if (!response.ok) {
+                    console.error('Erro na requisição:', response.status, response.statusText);
+                    return response.text(); // Retorna o erro como texto
+                }
+                return response.json(); // Tenta converter para JSON
+            })
+            .then(data => {
+                console.log('Dados recebidos do servidor:', data); // Loga os dados recebidos
+
+                if (typeof data === 'string') {
+                    console.error('Resposta HTML recebida (provavelmente erro):', data);
+                } else {
+                    if (data.success) {
+                        alert(data.message); // Exibe mensagem de sucesso
+                        window.location.reload(); // Recarrega a página
+                    } else {
+                        alert(data.message); // Exibe mensagem de erro
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error); // Captura erros de rede ou execução
+            });
+    }).catch(error => {
+        console.error('Erro ao salvar dados do editor:', error); // Captura erros do editor
+    });
+});
+
+function formatDate(timestamp) {
+    if(timestamp == null){
+        return '';
+    }
+
+    const date = new Date(timestamp); // Converte o timestamp para um objeto Date
+    const now = new Date(); // Data atual
+
+    const isToday = date.toDateString() === now.toDateString(); // Verifica se é hoje
+    const isSameYear = date.getFullYear() === now.getFullYear(); // Verifica se é o mesmo ano
+
+    if (isToday) {
+        // Formato: horas:minutos (24h)
+        return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+    } else if (isSameYear) {
+        // Formato: dia/mês
+        return `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}`;
+    } else {
+        // Formato: dia/mês/ano
+        return `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
+    }
+}
+
+function formatDateDateTime(datetime) {
+    // Converte a string DATETIME em um objeto Date
+    const date = new Date(datetime);
+
+    // Formata o dia com dois dígitos
+    const day = date.getDate().toString().padStart(2, '0');
+
+    // Formata o mês com dois dígitos (lembrando que os meses começam do 0)
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+
+    // Obtém o ano
+    const year = date.getFullYear();
+
+    // Obtém a hora no formato de 24 horas com dois dígitos
+    const hours = date.getHours().toString().padStart(2, '0');
+
+    // Obtém os minutos com dois dígitos
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+
+    // Combina tudo no formato desejado
+    return `${day}/${month}/${year} - ${hours}:${minutes}`;
+}
+
+document.querySelectorAll('.post_item').forEach(post => {
+    post.addEventListener('click', () => {
+        const postId = post.dataset.id;
+
+        // Requisição para buscar os detalhes do post
+        fetch(`get_post.php?id=${postId}`)
+            .then(response => {
+                console.log(response);
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar o post');
+                }
+                return response.json(); // Obtemos o JSON da resposta
+            })
+            .then(data => {
+                //console.log("da");
+                console.log(data);
+                if (data.success) {
+                    const { titulo, user_url_imagem, username, data_criacao, conteudo, post_url_imagem } = data.data;
+                    console.log(data.data);
+                    // Preenche os elementos do modal
+                    postModalTitle.textContent = titulo;
+                    postModalImage.src = post_url_imagem;
+                    postModalAuthor.textContent = `${username}`;
+                    postModalContent.innerHTML = conteudo;
+                    postModalUserImage.style.backgroundImage = `url('${user_url_imagem || "../images/defaultUser.jpg"}')`;
+                    postModalData.innerText = formatDateDateTime(data_criacao);
+
+                    // Exibe o modal
+                    viewPostModal.classList.remove('hidden');
+                    viewPostModal.classList.add('flex');
+                } else {
+                    alert(data.message || 'Erro ao carregar o post.');
+                }
+            })
+            .catch(error => console.error('Erro ao buscar o post:', error));
+    });
+});
+
+
+
+
+
+
+// Fechar modal ao clicar fora ou no botão de fechar
+btnCloseViewModal.addEventListener('click', () => {
+    viewPostModal.classList.add('hidden');
+    viewPostModal.classList.remove('flex');
+});
+
+// Fechar modal ao clicar fora
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+    }else{
+        if(e.target === viewPostModal){
+        viewPostModal.classList.remove('flex');
+        viewPostModal.classList.add('hidden');
+    }
+}});
